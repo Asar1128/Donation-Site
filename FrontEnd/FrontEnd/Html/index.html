@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Banner</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../Css/Style.css">
+    <style>
+        .progress {
+            height: 20px;
+            background-color: #4CAF50;
+            transition: width 1s ease-in-out;
+        }
+        .form_Display_None {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .we-are-block {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 0;
+            background-color: #f8f9fa;
+        }
+        #history-section {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+        }
+        .history-image {
+            flex: 1;
+            padding: 20px;
+        }
+        .history-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .history-info {
+            flex: 1;
+            padding: 20px;
+        }
+        .history-info h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .history-info p {
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .history-info a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        @media (max-width: 768px) {
+            #history-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+     <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">CharityOrg</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Donate.html">Donation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="AboutUs.html">About Us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <!-- Video Banner -->
+    <div class=" embed-responsive embed-responsive-21by9" style="height: 100%; max-height: 500px;">
+        <iframe src="https://www.youtube.com/embed/mMEq0r97T_k?si=lifXH2TMFYUPKzFb" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    </div>
+    
+    <!-- Information Section  -->
+    <div class="container mb-5 mt-5">
+        <h2 id="candidateName" class="mb-3"></h2>
+        <p id="desc" class="mb-4">This is our decs</p>
+        
+        <div class="ce_ixelgen_progress_bar block">
+            <h2>Campaign Progress</h2>
+            <hr>
+            <div class="progress_bar">
+                <div class="progress_bar_item grid-x">
+                    <div class="item_label cell auto">Donations</div>
+                    <div class="row">
+                        <div class="item_value cell shrink" id="collectedAmount">0Rs</div>
+                        <div id="goalAmount">/0Rs</div>
+                    </div>
+                    <div class="row">
+                        <div class="item_bar cell">
+                            <div class="progress" id="progressBar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <strong>Start Date:</strong> <span id="startDate"></span>
+                        </div>
+                        <div class="col">
+                            <strong>End Date:</strong> <span id="endDate"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example button to simulate donation -->
+            <button class="btn btn-primary mt-3" onclick="popUp()">Donate Now</button>
+
+            <div class="container">
+                <div class="form_Display_None" id="donationForm">
+                    <div class="form-group">
+                        <label for="donorName">Name</label>
+                        <input type="text" class="form-control" id="donorName" placeholder="Enter your name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="donationAmount">Donation Amount (Rs)</label>
+                        <input type="number" class="form-control" id="donationAmount" placeholder="e.g. 500" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="anonymousCheck" />
+                            Donate anonymously
+                        </label>
+                    </div>
+
+                    <button class="btn btn-success" onclick="submitDonation()">Submit Donation</button>
+                    <button class="btn btn-secondary ml-2" onclick="cancelDonation()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Aid Banner -->
+    <div class="we-are-block">
+        <div id="history-section">
+            <div class="history-image">
+                <img src="https://digitalupgrade.com/images/building_pic.jpg" width="951" height="471" alt="Building Pic">
+            </div>
+            <div class="history-info">
+                <h2>About Our Campaign</h2>
+                <p id="aboutCampaign">Loading campaign information...</p>
+                <a href="AboutUs.html" title="About Button">LEARN MORE</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Your existing footer code -->
+    </footer>
+
+    <script>
+        // Fetch campaign data from API
+        function fetchCampaignData() {
+            fetch('https://donation-site-backend-e100d7fddae1.herokuapp.com/donCampController/getValidCampaign')
+            .then(response => response.json())
+            .then(data => {
+                // Update the DOM with the fetched data
+                document.getElementById('candidateName').textContent = data.candidateName;
+                document.getElementById('collectedAmount').textContent = data.collectedAmount + 'Rs';
+                document.getElementById('goalAmount').textContent = '/' + data.goalAmount + 'Rs';
+                
+                // Calculate progress percentage
+                const progressPercentage = (data.collectedAmount / data.goalAmount) * 100;
+                document.getElementById('progressBar').style.width = progressPercentage + '%';
+                
+                // Format dates
+                const startDate = new Date(data.startDate);
+                const endDate = new Date(data.endDate);
+                document.getElementById('startDate').textContent = startDate.toLocaleDateString();
+                document.getElementById('endDate').textContent = endDate.toLocaleDateString();
+                
+                // Update about section
+                document.getElementById('aboutCampaign').textContent = data.description;
+            })
+            .catch(error => {
+                console.error('Error fetching campaign data:', error);
+                document.getElementById('desc').textContent = "Failed to load campaign description. Please try again later.";
+            });
+        }
+
+        // Donation form functions
+        function popUp() {
+            document.getElementById('donationForm').style.display = 'block';
+        }
+
+        function cancelDonation() {
+            document.getElementById('donationForm').style.display = 'none';
+            // Clear form fields
+            document.getElementById('donorName').value = '';
+            document.getElementById('donationAmount').value = '';
+            document.getElementById('anonymousCheck').checked = false;
+        }
+
+        function submitDonation() {
+            const donorName = document.getElementById('donorName').value;
+            const donationAmount = parseFloat(document.getElementById('donationAmount').value);
+            const isAnonymous = document.getElementById('anonymousCheck').checked;
+            
+            if (!donorName || !donationAmount) {
+                alert('Please fill in all required fields');
+                return;
+            }
+          
+            alert(`Thank you ${isAnonymous ? 'Anonymous' : donorName} for your donation of ${donationAmount}Rs!`);
+            
+            cancelDonation();
+            fetchCampaignData();
+        }
+        document.addEventListener('DOMContentLoaded', fetchCampaignData);
+    </script>
+
+    <!-- Bootstrap + jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+    <script src="../Js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+</html>
