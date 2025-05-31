@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Panel - Add Goal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      border-radius: 1rem;
+    }
+    h1 {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="Donate.html">Donation</a></li>
+        <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Admin Panel - Add Goal</h1>
+
+    <div class="card p-4 shadow-sm">
+      <form id="donationForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Candidate Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter candidate's name" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="amount" class="form-label">Goal Amount</label>
+          <input type="number" class="form-control" id="amount" placeholder="Enter goal amount" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="to" class="form-label">Description</label>
+          <textarea class="form-control" id="to" rows="3" placeholder="Enter goal description" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Submit Goal</button>
+      </form>
+
+      <div id="message" class="mt-3"></div>
+    </div>
+  </div>
+
+ <script>
+  // Global variable for password
+  let password = '';
+
+  // On DOM load, check password from sessionStorage
+  document.addEventListener('DOMContentLoaded', function () {
+    // Retrieve password
+    password = sessionStorage.getItem('adminPassword');
+
+    // Redirect if not found
+    if (!password) {
+      window.location.href = '../Html/admin-login.html';
+      return;
+    }
+
+    // Set up logout
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', function () {
+        sessionStorage.removeItem('adminPassword');
+        window.location.href = '../Html/admin-login.html';
+      });
+    }
+
+    // Now safe to add event listener for the donation form
+    const donationForm = document.getElementById('donationForm');
+    if (donationForm) {
+      donationForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const candidateName = document.getElementById('name').value;
+        const goalAmount = document.getElementById('amount').value;
+        const description = document.getElementById('to').value;
+
+        fetch('https://donation-site-backend-e100d7fddae1.herokuapp.com/donCampController', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'site-admin-pass': password
+          },
+          body: JSON.stringify({ candidateName, goalAmount, description })
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Failed to submit goal");
+          }
+          return response.json();
+        })
+        .then(data => {
+          document.getElementById('message').innerHTML = `
+            <div class="alert alert-success">Goal added successfully!</div>
+          `;
+          donationForm.reset();
+        })
+        .catch(error => {
+          document.getElementById('message').innerHTML = `
+            <div class="alert alert-danger">${error.message}</div>
+          `;
+        });
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
