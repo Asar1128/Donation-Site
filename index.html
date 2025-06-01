@@ -7,244 +7,572 @@
     <title>Video Banner</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./FrontEnd/Css/Style.css">
-    <style>
-        .progress {
-            height: 20px;
-            background-color: #4CAF50;
-            transition: width 1s ease-in-out;
-        }
-        .form_Display_None {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .we-are-block {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 50px 0;
-            background-color: #f8f9fa;
-        }
-        #history-section {
-            display: flex;
-            max-width: 1200px;
-            width: 100%;
-        }
-        .history-image {
-            flex: 1;
-            padding: 20px;
-        }
-        .history-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .history-info {
-            flex: 1;
-            padding: 20px;
-        }
-        .history-info h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        .history-info p {
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-        .history-info a {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        @media (max-width: 768px) {
-            #history-section {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-
-     <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
-  <div class="container">
+<!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+  <div class="container" style="padding-inline: 20px;">
     <a class="navbar-brand fw-bold" href="#">CharityOrg</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home</a>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <span class="nav-link-inner">Home</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./FrontEnd/Html/Donate.html">Donation</a>
+          <a class="nav-link" href="/FrontEnd/Html/DonateAmountCheck.html">
+            <span class="nav-link-inner">Donation</span>
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./FrontEnd/FrontEnd/Html/AboutUs.html">About Us</a>
+          <a class="nav-link" href="/FrontEnd/Html/AboutUs.html">
+            <span class="nav-link-inner">About Us</span>
+          </a>
         </li>
+        
       </ul>
     </div>
+
+     <div class="d-flex">
+        <a class="nav-link admin-login" href="/FrontEnd/Html/AdminLoginPage.html">
+          <i class="fas fa-user-shield me-2"></i>
+          <span class="nav-link-inner"></span>
+        </a>
+      </div>
   </div>
 </nav>
 
-    <!-- Video Banner -->
-    <div class=" embed-responsive embed-responsive-21by9" style="height: 100%; max-height: 500px;">
-        <iframe src="https://www.youtube.com/embed/mMEq0r97T_k?si=lifXH2TMFYUPKzFb" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+<!-- Video Banner -->
+<div class="video-banner-container position-relative" style="max-height: 500px;">
+    <!-- Thumbnail Image (shown before video plays) -->
+    <div id="videoThumbnail" class="video-thumbnail w-100 h-100 position-absolute">
+        <img src="https://img.youtube.com/vi/mMEq0r97T_k/maxresdefault.jpg" alt="Video thumbnail" class="w-100 h-100 object-fit-cover">
+        <div class="thumbnail-overlay d-flex flex-column align-items-center justify-content-center">
+            <button id="thumbnailPlayButton" class="btn-play-video">
+                <i class="fas fa-play"></i>
+            </button>
+            <h1 class="banner-title mt-3">Make a Difference Today</h1>
+            <p class="banner-subtitle">Watch our story to learn more</p>
+        </div>
     </div>
+    
+    <!-- Video Controls -->
+    <div id="videoControls" class="video-controls position-absolute d-none">
+        <button id="pauseButton" class="btn-control">
+            <i class="fas fa-pause"></i>
+        </button>
+        <button id="replayButton" class="btn-control">
+            <i class="fas fa-redo"></i>
+        </button>
+        <button id="showThumbnailButton" class="btn-control">
+            <i class="fas fa-image"></i>
+        </button>
+    </div>
+    
+    <!-- Video (initially hidden) -->
+    <div class="embed-responsive embed-responsive-21by9 h-100">
+        <iframe id="videoPlayer" class="embed-responsive-item" 
+                src="https://www.youtube.com/embed/mMEq0r97T_k?si=lifXH2TMFYUPKzFb&autoplay=0&mute=1&enablejsapi=1&rel=0" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+    </div>
+</div>
+
+
     
     <!-- Information Section  -->
-    <div class="container mb-5 mt-5">
-        <h2 id="candidateName" class="mb-3"></h2>
-        <p id="desc" class="mb-4">This is our decs</p>
+<div class="campaign-container">
+    <!-- Aid Banner Section -->
+    <div class="aid-banner">
+        <div class="banner-content-wrapper">
+            <div class="banner-image">
+                <img src="https://digitalupgrade.com/images/building_pic.jpg" alt="Campaign Recipient" class="banner-img">
+                <div class="image-overlay"></div>
+            </div>
+            <div class="banner-content">
+                <h1 id="candidateName" class="banner-title">Asar Safdar</h1>
+                <p id="aboutCampaign" class="banner-description">Help this person</p>
+                <a href="AboutUs.html" class="banner-button">
+                    LEARN MORE
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress and Donation Section -->
+    <div class="progress-donation-section">
+        <div class="progress-card">
+            <h2 class="section-title">Campaign Progress</h2>
+            <div class="progress-divider"></div>
+            
+            <div class="progress-info">
+                <div class="progress-label">Donations Progress</div>
+                <div class="progress-amount">
+                    <span class="collected-amount" id="collectedAmount">77,999Rs</span>
+                    <span class="goal-amount" id="goalAmount">/100,000Rs</span>
+                </div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar" style="width: 78%;"></div>
+                <div class="progress-percentage" id="progressPercentage">78%</div>
+            </div>
+            
+            <div class="progress-dates">
+                <div class="date-item">
+                    <span class="date-label">Start Date:</span>
+                    <span class="date-value" id="startDate">May 31, 2025</span>
+                </div>
+                <div class="date-item">
+                    <span class="date-label">End Date:</span>
+                    <span class="date-value" id="endDate">Jun 7, 2025</span>
+                </div>
+            </div>
+            
+            <button class="donate-button" onclick="openDonationModal()">
+                <i class="fas fa-heart"></i> Donate Now
+            </button>
+        </div>
+    </div>
+    <!-- Donation Modal -->
+<div class="modal-overlay" id="donationModal">
+    <div class="donation-modal">
+        <div class="modal-header" style="  padding: 1.5rem;">
+            <h3>Make a Donation</h3>
+            <button class="close-modal" onclick="closeDonationModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
         
-        <div class="ce_ixelgen_progress_bar block">
-            <h2>Campaign Progress</h2>
-            <hr>
-            <div class="progress_bar">
-                <div class="progress_bar_item grid-x">
-                    <div class="item_label cell auto">Donations</div>
-                    <div class="row">
-                        <div class="item_value cell shrink" id="collectedAmount">0Rs</div>
-                        <div id="goalAmount">/0Rs</div>
-                    </div>
-                    <div class="row">
-                        <div class="item_bar cell">
-                            <div class="progress" id="progressBar" style="width: 0%;"></div>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col">
-                            <strong>Start Date:</strong> <span id="startDate"></span>
-                        </div>
-                        <div class="col">
-                            <strong>End Date:</strong> <span id="endDate"></span>
-                        </div>
-                    </div>
-                </div>
+        <div class="modal-body" style="  padding: 1.5rem;">
+            <div class="form-group">
+                <label for="donorName">Your Name</label>
+                <input type="text" id="donorName" placeholder="Enter your full name">
+                <i class="fas fa-user"></i>
             </div>
-
-            <!-- Example button to simulate donation -->
-            <button class="btn btn-primary mt-3" onclick="popUp()">Donate Now</button>
-
-            <div class="container">
-                <div class="form_Display_None" id="donationForm">
-                    <div class="form-group">
-                        <label for="donorName">Name</label>
-                        <input type="text" class="form-control" id="donorName" placeholder="Enter your name" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="donationAmount">Donation Amount (Rs)</label>
-                        <input type="number" class="form-control" id="donationAmount" placeholder="e.g. 500" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>
-                            <input type="checkbox" id="anonymousCheck" />
-                            Donate anonymously
-                        </label>
-                    </div>
-
-                    <button class="btn btn-success" onclick="submitDonation()">Submit Donation</button>
-                    <button class="btn btn-secondary ml-2" onclick="cancelDonation()">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Aid Banner -->
-    <div class="we-are-block">
-        <div id="history-section">
-            <div class="history-image">
-                <img src="https://digitalupgrade.com/images/building_pic.jpg" width="951" height="471" alt="Building Pic">
-            </div>
-            <div class="history-info">
-                <h2>About Our Campaign</h2>
-                <p id="aboutCampaign">Loading campaign information...</p>
-                <a href="AboutUs.html" title="About Button">LEARN MORE</a>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <!-- Your existing footer code -->
-    </footer>
-
-    <script>
-        // Fetch campaign data from API
-        function fetchCampaignData() {
-            fetch('https://donation-site-backend-e100d7fddae1.herokuapp.com/donCampController/getValidCampaign')
-            .then(response => response.json())
-            .then(data => {
-                // Update the DOM with the fetched data
-                document.getElementById('candidateName').textContent = data.candidateName;
-                document.getElementById('collectedAmount').textContent = data.collectedAmount + 'Rs';
-                document.getElementById('goalAmount').textContent = '/' + data.goalAmount + 'Rs';
-                
-                // Calculate progress percentage
-                const progressPercentage = (data.collectedAmount / data.goalAmount) * 100;
-                document.getElementById('progressBar').style.width = progressPercentage + '%';
-                
-                // Format dates
-                const startDate = new Date(data.startDate);
-                const endDate = new Date(data.endDate);
-                document.getElementById('startDate').textContent = startDate.toLocaleDateString();
-                document.getElementById('endDate').textContent = endDate.toLocaleDateString();
-                
-                // Update about section
-                document.getElementById('aboutCampaign').textContent = data.description;
-            })
-            .catch(error => {
-                console.error('Error fetching campaign data:', error);
-                document.getElementById('desc').textContent = "Failed to load campaign description. Please try again later.";
-            });
-        }
-
-        // Donation form functions
-        function popUp() {
-            document.getElementById('donationForm').style.display = 'block';
-        }
-
-        function cancelDonation() {
-            document.getElementById('donationForm').style.display = 'none';
-            // Clear form fields
-            document.getElementById('donorName').value = '';
-            document.getElementById('donationAmount').value = '';
-            document.getElementById('anonymousCheck').checked = false;
-        }
-
-        function submitDonation() {
-            const donorName = document.getElementById('donorName').value;
-            const donationAmount = parseFloat(document.getElementById('donationAmount').value);
-            const isAnonymous = document.getElementById('anonymousCheck').checked;
             
-            if (!donorName || !donationAmount) {
-                alert('Please fill in all required fields');
-                return;
+            <div class="form-group">
+                <label for="donationAmount">Donation Amount (Rs)</label>
+                <input type="number" id="donationAmount" placeholder="Enter amount">
+                <i class="fas fa-rupee-sign"></i>
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="anonymousCheck">
+                <label for="anonymousCheck">Donate anonymously</label>
+            </div>
+            
+            <div class="quick-amounts">
+                <button class="quick-amount" onclick="setAmount(500)">500Rs</button>
+                <button class="quick-amount" onclick="setAmount(1000)">1000Rs</button>
+                <button class="quick-amount" onclick="setAmount(2000)">2000Rs</button>
+                <button class="quick-amount" onclick="setAmount(5000)">5000Rs</button>
+            </div>
+        </div>
+        
+        <div class="modal-footer" style="  padding: 1.5rem; justify-content:flex-start" >
+            <button class="submit-button" onclick="submitDonation()">
+                <i class="fas fa-paper-plane"></i> Submit Donation
+            </button>
+            <button class="cancel-button" onclick="closeDonationModal()">
+                <i class="fas fa-times"></i> Cancel
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+    <!-- About us -->
+     <section class="campaign-container about-section py-5">
+    <div class="">
+        <div class="row justify-content-center">
+            <div>
+                <h2 class="section-title text-left ">About Us</h2>
+                <div class="progress-divider"></div>
+                <div class="about-content">
+                    <p class="about-text lead">
+                        We are a dedicated team committed to making a positive impact in our community. 
+                        Founded on the principles of transparency and compassion, our organization 
+                        focuses on creating meaningful change through targeted initiatives and campaigns.
+                    </p>
+                    <p class="about-text">
+                        Since our establishment, we've successfully completed numerous projects that have 
+                        directly benefited thousands of individuals. Our approach combines innovative 
+                        solutions with grassroots engagement to address pressing social challenges.
+                    </p>
+                    <p class="about-text">
+                        What sets us apart is our commitment to accountability - every donation is tracked 
+                        and reported, ensuring donors see exactly how their contributions are making a 
+                        difference. We believe in the power of collective action and invite you to join 
+                        us in our mission to create a better future for all.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About Us Ends -->
+
+<footer class="custom-footer pt-4">
+    <!-- CDN Links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <div class="container">
+        <div class="row g-4" style="padding: 20px;">
+            <!-- About Section -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-heading mb-3">About Us</h5>
+                <p class="footer-text small">Your company description goes here. Provide brief information about your business.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <!-- Enhanced Quick Links -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-heading mb-3">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <a href="#" class="footer-link">
+                            <span class="link-text">Home</span>
+                            <i class="bi bi-arrow-right-short link-icon"></i>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="footer-link">
+                            <span class="link-text">About</span>
+                            <i class="bi bi-arrow-right-short link-icon"></i>
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="footer-link">
+                            <span class="link-text">Contact</span>
+                            <i class="bi bi-arrow-right-short link-icon"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-heading mb-3">Contact</h5>
+                <ul class="list-unstyled footer-text small">
+                    <li class="mb-2">
+                        <i class="bi bi-geo-alt-fill me-2"></i>
+                        123 Street, City, Country
+                    </li>
+                    <li class="mb-2">
+                        <i class="bi bi-telephone-fill me-2"></i>
+                        +1 234 567 890
+                    </li>
+                    <li class="mb-2">
+                        <i class="bi bi-envelope-fill me-2"></i>
+                        info@example.com
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="col-lg-3 col-md-6">
+                <h5 class="footer-heading mb-3">Newsletter</h5>
+                <form class="newsletter-form">
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control form-control-sm" placeholder="Enter email">
+                        <button class="btn btn-primary btn-sm" type="button">
+                            <i class="bi bi-send-fill"></i>
+                        </button>
+                    </div>
+                </form>
+                <div class="scroll-top text-end">
+                    <button class="btn-scroll-top">
+                        <i class="bi bi-arrow-up-circle-fill"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3 mt-4 border-top">
+            <small class="footer-text">
+                © 2023 Your Brand. All rights reserved. 
+                <span class="d-block d-sm-inline">Privacy | Terms</span>
+            </small>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #2196F3;
+            --secondary-color: #f8f9fa;
+            --text-color: #333333;
+            --light-gray: #f5f5f5;
+        }
+
+        .custom-footer {
+            background-color: white;
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-heading {
+            color: var(--primary-color) !important;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-text {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .footer-link {
+            color: var(--text-color) !important;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color) !important;
+            padding-left: 5px;
+        }
+
+        .link-icon {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .footer-link:hover .link-icon {
+            opacity: 1;
+            transform: translateX(3px);
+        }
+
+        .social-link {
+            color: var(--text-color) !important;
+            margin-right: 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary-color) !important;
+            transform: scale(1.2);
+        }
+
+        .btn-scroll-top {
+            border: none;
+            background: none;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-scroll-top:hover {
+            transform: scale(1.1);
+        }
+
+        .newsletter-form .form-control {
+            border-radius: 0;
+            border: 1px solid #ddd;
+            border-right: none;
+        }
+
+        .newsletter-form .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            border-radius: 0;
+        }
+
+        .newsletter-form .form-control:focus {
+            box-shadow: none;
+            border-color: var(--primary-color);
+        }
+
+        .footer-copyright {
+            color: var(--text-color);
+            font-size: 0.85rem;
+        }
+
+        .footer-copyright a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .footer-heading:after {
+                width: 30%;
             }
-          
-            alert(`Thank you ${isAnonymous ? 'Anonymous' : donorName} for your donation of ${donationAmount}Rs!`);
             
-            cancelDonation();
-            fetchCampaignData();
+            .social-icons {
+                justify-content: center;
+            }
         }
-        document.addEventListener('DOMContentLoaded', fetchCampaignData);
-    </script>
+    </style>
+    <script>
+        // Smooth scroll to top
+        document.querySelector('.btn-scroll-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
+        // Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.footer-link').forEach((element) => {
+                observer.observe(element);
+            });
+        });
+    </script>
+  <script>
+    // Load YouTube API
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Global variable for player instance
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('videoPlayer', {
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+
+    function onPlayerReady(event) {
+        // Player is ready
+    }
+
+    function onPlayerStateChange(event) {
+        const videoControls = document.getElementById('videoControls');
+        const videoThumbnail = document.getElementById('videoThumbnail');
+        
+        if (event.data == YT.PlayerState.PLAYING) {
+            videoThumbnail.style.opacity = '0';
+            setTimeout(() => {
+                videoThumbnail.style.display = 'none';
+            }, 500);
+            videoControls.classList.remove('d-none');
+        } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+            videoControls.classList.remove('d-none');
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const thumbnailPlayButton = document.getElementById('thumbnailPlayButton');
+        const pauseButton = document.getElementById('pauseButton');
+        const replayButton = document.getElementById('replayButton');
+        const showThumbnailButton = document.getElementById('showThumbnailButton');
+        const videoThumbnail = document.getElementById('videoThumbnail');
+        const videoControls = document.getElementById('videoControls');
+
+        // Play video from thumbnail
+        thumbnailPlayButton.addEventListener('click', function() {
+            if (player) {
+                player.playVideo();
+                player.unMute();
+            }
+        });
+
+        // Pause video
+        pauseButton.addEventListener('click', function() {
+            if (player) {
+                player.pauseVideo();
+            }
+        });
+
+        // Replay video
+        replayButton.addEventListener('click', function() {
+            if (player) {
+                player.seekTo(0);
+                player.playVideo();
+                player.unMute();
+            }
+        });
+
+        // Show thumbnail again
+        showThumbnailButton.addEventListener('click', function() {
+            if (player) {
+                player.pauseVideo();
+                videoThumbnail.style.display = 'block';
+                setTimeout(() => {
+                    videoThumbnail.style.opacity = '1';
+                }, 10);
+            }
+        });
+
+        // Show controls on hover
+        document.querySelector('.video-banner-container').addEventListener('mouseenter', function() {
+            if (player && player.getPlayerState() !== YT.PlayerState.UNSTARTED) {
+                videoControls.classList.remove('d-none');
+            }
+        });
+
+        // Hide controls after delay
+        document.querySelector('.video-banner-container').addEventListener('mouseleave', function() {
+            setTimeout(() => {
+                if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
+                    videoControls.classList.add('d-none');
+                }
+            }, 2000);
+        });
+    });
+</script>
+</footer>
     <!-- Bootstrap + jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
-    <script src="../Js/script.js"></script>
+    <script src="/FrontEnd/Js/homePage.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/FrontEnd/Js/Navbar.js"></script>
 </body>
 </html>
