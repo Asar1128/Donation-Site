@@ -439,6 +439,32 @@ a.icon-link:focus svg {
 .form_Display_None{
     display: none;
 }
+.banner-container {
+        width: 100%;
+        overflow: hidden; /* Ensures no overflow if image is larger than container */
+        position: relative;
+    }
+    
+    .banner-image {
+        width: 100%;
+        height: auto; /* Maintain aspect ratio */
+        max-height: 400px; /* Set your desired maximum height */
+        object-fit: cover; /* Ensures image covers the area without distortion */
+        display: block; /* Removes extra space below image */
+    }
+
+    /* Optional: Add media queries for different screen sizes */
+    @media (max-width: 768px) {
+        .banner-image {
+            max-height: 300px; /* Smaller height on mobile */
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .banner-image {
+            max-height: 200px; /* Even smaller for very small devices */
+        }
+    }
 
 /*=========================
 Admin Login
@@ -1331,7 +1357,7 @@ Footer
 About us Section
 ===================================*/
 
- 
+
     .section-title {
         color: #2196F3;
         font-weight: 600;
@@ -1378,7 +1404,14 @@ About us Section
             font-size: 0.95rem;
         }
     }
-
+@media(max-width:500px){
+     .about-section-secondary{
+        padding-inline: 20px;
+     }
+     .thumbnail-overlay{
+        display: block !important;
+     }
+}
   /* ===================================
   Video Section
   =======================================*/
@@ -1486,6 +1519,15 @@ About us Section
         }
     }
 
+    @media(max-width:500px){
+     .thumbnail-overlay{
+        display: block !important;
+     }
+     .banner-title::after{
+      left: 10% !important;
+     }
+}
+
 
        
   /* Custom Navbar Styles */
@@ -1582,3 +1624,20 @@ About us Section
     }
   }
      
+  .campaign-completed-message,
+.no-campaign-message {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.campaign-completed-message .alert {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.no-campaign-message .alert {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}

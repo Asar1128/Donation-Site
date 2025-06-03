@@ -202,62 +202,60 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light custom-navbar sticky-top">
-        <div class="container-fluid">
-            <button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <a class="navbar-brand fw-bold" href="#">CharityOrg Admin</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <span class="nav-link-inner">Home</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/FrontEnd/Html/DonateAmountCheck.html">
-                            <span class="nav-link-inner">Donation</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/FrontEnd/Html/AboutUs.html">
-                            <span class="nav-link-inner">About Us</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+     <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+  <div class="container" style="padding-inline: 20px;">
+    <a class="navbar-brand fw-bold" href="/index.html" style="font-weight: 900;">helpthem.live</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/index.html">
+            <span class="nav-link-inner">Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/FrontEnd/donate/index.html">
+            <span class="nav-link-inner">Donation</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/FrontEnd/about/index.html">
+            <span class="nav-link-inner">About Us</span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
 
-            <div class="d-flex">
-                <a class="nav-link admin-login" href="#">
-                    <i class="fas fa-user-circle me-2"></i>
-                    <span class="nav-link-inner">Admin</span>
-                </a>
-            </div>
-        </div>
-    </nav>
+     <div class="d-flex">
+        <a class="nav-link admin-login" href="/FrontEnd/admin/login/index.html">
+          <i class="fas fa-user-shield me-2"></i>
+          <span class="nav-link-inner"></span>
+        </a>
+      </div>
+  </div>
+</nav>
 
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-heading">Core</div>
-        <a href="/FrontEnd/Html/campaign_Creation.html" class="sidebar-link active">
+        <a href="/FrontEnd/admin/campaigns/index.html" class="sidebar-link active">
             <i class="fas fa-fw fa-plus-circle"></i>
             <span>Add Campaign</span>
         </a>
-        <a href="AdminTansectionsCheck.html" class="sidebar-link">
+        <a href="/FrontEnd/admin/transections/index.html" class="sidebar-link">
             <i class="fas fa-fw fa-list-alt"></i>
             <span>View Transactions</span>
         </a>
-        <a href="./allCampaign.html" class="sidebar-link">
+        <a href="/FrontEnd/admin/all-campaigns/index.html" class="sidebar-link">
             <i class="fas fa-fw fa-hands-helping"></i>
             <span>All Campaigns</span>
         </a>
         
-        <div class="sidebar-heading">Management</div>
+        <!-- <div class="sidebar-heading">Management</div>
         <a href="#" class="sidebar-link">
             <i class="fas fa-fw fa-users"></i>
             <span>User Management</span>
@@ -269,7 +267,7 @@
         <a href="#" class="sidebar-link">
             <i class="fas fa-fw fa-cog"></i>
             <span>Settings</span>
-        </a>
+        </a> -->
     </div>
 
     <!-- Main Content -->

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us | Your Donation Platform</title>
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/FrontEnd/Css/Style.css">
+  <style>
+    :root {
+      --primary-color: #4e73df;
+      --secondary-color: #f8f9fc;
+      --accent-color: #2e59d9;
+      --text-color: #5a5c69;
+      --success-color: #1cc88a;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f9fc;
+      color: var(--text-color);
+    }
+    
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+      color: white;
+      padding: 5rem 0;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+    }
+    
+    .page-title {
+      font-weight: 700;
+      font-size: 3rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    
+    .section-title {
+      font-weight: 600;
+      color: var(--primary-color);
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+    
+    .about-card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 2.5rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+      height: 100%;
+    }
+    
+    .about-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .icon-box {
+      width: 70px;
+      height: 70px;
+      background-color: rgba(78, 115, 223, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .icon-box i {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+    }
+    
+    .team-member {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .team-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1rem;
+    }
+    
+    .stats-item {
+      text-align: center;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 1.5rem;
+    }
+    
+    .stats-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+    
+    .stats-label {
+      font-size: 1rem;
+      color: var(--text-color);
+      opacity: 0.8;
+    }
+    
+    .mission-vision {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 4rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .mission-vision::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+    }
+    
+    .mission-card, .vision-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 2rem;
+      height: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-section {
+        padding: 3rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+ <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+  <div class="container" style="padding-inline: 20px;">
+    <a class="navbar-brand fw-bold" href="index.html" style="font-weight: 900;">helpthem.live</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <span class="nav-link-inner">Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/FrontEnd/donate/index.html">
+            <span class="nav-link-inner">Donation</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/FrontEnd/about/index.html">
+            <span class="nav-link-inner">About Us</span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+
+     <div class="d-flex">
+        <a class="nav-link admin-login" href="/FrontEnd/admin/login/index.html">
+          <i class="fas fa-user-shield me-2"></i>
+          <span class="nav-link-inner"></span>
+        </a>
+      </div>
+  </div>
+</nav>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container text-center position-relative">
+      <h1 class="page-title">About Our Platform</h1>
+      <p class="lead">Transforming generosity into meaningful impact</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center mb-5">
+        <h2 class="section-title">Our Story</h2>
+        <p class="lead">Founded in 2023, our donation platform was created to bridge the gap between compassionate donors and worthy causes. What began as a simple idea has grown into a trusted community of thousands who believe in the power of collective giving.</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="about-card">
+          <div class="icon-box mx-auto">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h3 class="h4 mb-3 text-center">Our Mission</h3>
+          <p class="text-center">To create a transparent, efficient, and impactful platform that connects donors with verified causes, ensuring every contribution makes a real difference.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="about-card">
+          <div class="icon-box mx-auto">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3 class="h4 mb-3 text-center">Our Vision</h3>
+          <p class="text-center">A world where generosity flows effortlessly to where it's needed most, creating sustainable change and empowering communities.</p>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="about-card">
+          <div class="icon-box mx-auto">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3 class="h4 mb-3 text-center">Our Values</h3>
+          <p class="text-center">Transparency, Accountability, Impact, and Community are the core principles that guide every aspect of our platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center mb-5">
+        <h2 class="section-title">By The Numbers</h2>
+        <p class="lead">Our impact in real numbers</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="stats-item">
+          <div class="stats-number" id="donors-count">10,000+</div>
+          <div class="stats-label">Donors</div>
+        </div>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="stats-item">
+          <div class="stats-number" id="donations-count">$5M+</div>
+          <div class="stats-label">Raised</div>
+        </div>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="stats-item">
+          <div class="stats-number" id="campaigns-count">500+</div>
+          <div class="stats-label">Campaigns</div>
+        </div>
+      </div>
+      
+      <div class="col-md-3">
+        <div class="stats-item">
+          <div class="stats-number" id="success-rate">100%</div>
+          <div class="stats-label">Success Rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision Expanded -->
+  <section class="mission-vision mb-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="mission-card">
+            <h3 class="text-white mb-4"><i class="fas fa-bullseye me-2"></i> Mission Expanded</h3>
+            <p>We're committed to revolutionizing philanthropy through technology. Our platform ensures that:</p>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Every donation reaches its intended recipient</li>
+              <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Donors receive complete transparency</li>
+              <li class="mb-2"><i class="fas fa-check-circle me-2"></i> Causes get the visibility they deserve</li>
+              <li><i class="fas fa-check-circle me-2"></i> The giving process is simple and rewarding</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="vision-card">
+            <h3 class="text-white mb-4"><i class="fas fa-eye me-2"></i> Vision Expanded</h3>
+            <p>We envision a future where:</p>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="fas fa-arrow-right me-2"></i> Giving becomes a daily habit for millions</li>
+              <li class="mb-2"><i class="fas fa-arrow-right me-2"></i> Technology eliminates barriers to generosity</li>
+              <li class="mb-2"><i class="fas fa-arrow-right me-2"></i> Every cause can find its supporters</li>
+              <li><i class="fas fa-arrow-right me-2"></i> Impact measurement becomes instantaneous</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center mb-5">
+        <h2 class="section-title">Meet Our Team</h2>
+        <p class="lead">The passionate people behind the platform</p>
+      </div>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="team-member">
+          <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Team Member" class="team-img">
+          <h4 class="h5 mb-1">Sarah Johnson</h4>
+          <p class="text-muted">CEO & Founder</p>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="team-member">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member" class="team-img">
+          <h4 class="h5 mb-1">Michael Chen</h4>
+          <p class="text-muted">CTO</p>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="team-member">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Team Member" class="team-img">
+          <h4 class="h5 mb-1">Priya Patel</h4>
+          <p class="text-muted">Impact Director</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <div class="about-card p-5">
+          <h2 class="mb-4">Ready to Make an Impact?</h2>
+          <p class="lead mb-4">Join our community of donors and be part of the change you want to see in the world.</p>
+          <a href="#" class="btn btn-primary btn-lg px-4 py-2"><i class="fas fa-heart me-2"></i> Start Donating</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Animate stats counting
+    function animateValue(id, start, end, duration) {
+      const obj = document.getElementById(id);
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        
+        if (id === 'donations-count') {
+          obj.innerHTML = '$' + value.toLocaleString() + '+';
+        } else {
+          obj.innerHTML = value + '+';
+        }
+        
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animate stats
+      animateValue('donors-count', 0, 10000, 2000);
+      animateValue('donations-count', 0, 5000000, 2000);
+      animateValue('campaigns-count', 0, 500, 2000);
+    });
+  </script>
+</body>
+</html>
