@@ -46,7 +46,6 @@
       </div>
   </div>
 </nav>
-
   <div class="container login_container">
     <div class="box">
       <span class="borderLine"></span>
@@ -108,7 +107,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     if(data.token) {
       sessionStorage.setItem('adminToken', data.token);
     }
-    window.location.href = './admin/panel';
+    window.location.href = '../panel/index.html';
   })
   .catch(error => {
     sessionStorage.removeItem('adminPassword');
