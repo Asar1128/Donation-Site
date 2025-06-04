@@ -16,7 +16,7 @@ class DonationCampaign {
 
   async fetchCampaignData() {
     try {
-      const response = await fetch('https://donation-site-backend-e100d7fddae1.herokuapp.com/donCampController/getValidCampaign');
+      const response = await fetch('https://api.helpthem.live/donCampController/getValidCampaign');
 
       // if (!response.ok) {
       //   console.log("404 responce check _ Response ")
@@ -185,7 +185,7 @@ class DonationCampaign {
     try {
       const campaignData = await this.fetchCampaignData();
 
-      const response = await fetch('https://donation-site-backend-e100d7fddae1.herokuapp.com/donController', {
+      const response = await fetch('https://api.helpthem.live/donController', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
