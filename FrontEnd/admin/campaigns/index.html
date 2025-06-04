@@ -164,34 +164,43 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <i class="fas fa-hands-helping me-2"></i>helpthem.live
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/FrontEnd/donate/index.html">Donation</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/FrontEnd/about/index.html">About Us</a>
-          </li>
-        </ul>
-        <div class="d-flex">
-          <button id="logoutBtn" class="btn btn-outline-danger">
-            <i class="fas fa-sign-out-alt me-1"></i> Logout
-          </button>
-        </div>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+  <div class="container" style="padding-inline: 20px;">
+    <a class="navbar-brand fw-bold" href="../../index.html" style="font-weight: 900;">helpthem.live</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="../../index.html">
+            <span class="nav-link-inner">Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../donate/index.html">
+            <span class="nav-link-inner">Donation</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../about/index.html">
+            <span class="nav-link-inner">About Us</span>
+          </a>
+        </li>
+        
+      </ul>
+         <button id="logoutBtn" class="logout-btn">Logout</button>
     </div>
-  </nav>
+
+     <!-- <div class="d-flex">
+        <a class="nav-link admin-login" href="../login/index.html">
+          <i class="fas fa-user-shield me-2"></i>
+          <span class="nav-link-inner"></span>
+        </a>
+      </div> -->
+  </div>
+</nav>
 
   <!-- Main Content -->
   <div class="container my-5">
@@ -312,7 +321,7 @@
           submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Creating...';
           submitBtn.disabled = true;
 
-          fetch('https://donation-site-backend-e100d7fddae1.herokuapp.com/donCampController', {
+          fetch('https://api.helpthem.live/donCampController', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

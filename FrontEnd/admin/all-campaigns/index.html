@@ -16,14 +16,6 @@
       --dark-color: #5a5c69;
       --light-color: #f8f9fc;
     }
-    
-    body {
-      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background-color: #f8f9fc;
-      color: var(--dark-color);
-      padding-top: 20px;
-    }
-    
     .page-header {
       border-bottom: 1px solid #e3e6f0;
       padding-bottom: 15px;
@@ -213,36 +205,45 @@
   </style>
 </head>
 <body>
-     <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <i class="fas fa-hands-helping me-2"></i>helpthem.live
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/FrontEnd/donate/index.html">Donation</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/FrontEnd/about/index.html">About Us</a>
-          </li>
-        </ul>
-        <div class="d-flex">
-          <button id="logoutBtn" class="btn btn-outline-danger">
-            <i class="fas fa-sign-out-alt me-1"></i> Logout
-          </button>
-        </div>
-      </div>
+   <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+  <div class="container" style="padding-inline: 20px;">
+    <a class="navbar-brand fw-bold" href="../../index.html" style="font-weight: 900;">helpthem.live</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="../../index.html">
+            <span class="nav-link-inner">Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../donate/index.html">
+            <span class="nav-link-inner">Donation</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../about/index.html">
+            <span class="nav-link-inner">About Us</span>
+          </a>
+        </li>
+        
+      </ul>
+         <button id="logoutBtn" class="logout-btn">Logout</button>
     </div>
-  </nav>
+
+     <!-- <div class="d-flex">
+        <a class="nav-link admin-login" href="../login/index.html">
+          <i class="fas fa-user-shield me-2"></i>
+          <span class="nav-link-inner"></span>
+        </a>
+      </div> -->
+  </div>
+</nav>
   <div class="container">
-    <div class="page-header">
+    <div class="page-header pt-3">
       <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-hands-helping me-2"></i> All Campaigns</h1>
     </div>
     
@@ -326,7 +327,7 @@
     let allCampaigns = [];
 
     function fetchCampaigns() {
-      fetch("https://donation-site-backend-e100d7fddae1.herokuapp.com/donCampController", {
+      fetch("https://api.helpthem.live/donCampController", {
         headers: { "site-admin-pass": password }
       })
       .then(res => res.json())
@@ -429,7 +430,7 @@
   }
 
   try {
-    const response = await fetch(`https://donation-site-backend-e100d7fddae1.herokuapp.com/donCampController/deleteCampaign`, {
+    const response = await fetch(`https://api.helpthem.live/donCampController/deleteCampaign`, {
       method: "POST",  
       headers: { 
         "site-admin-pass": password,
@@ -495,7 +496,7 @@
         isEnded: document.getElementById("updateIsEnded").value === "true"
       };
 
-      fetch("https://donation-site-backend-e100d7fddae1.herokuapp.com/donCampController/updateCampaign", {
+      fetch("https://api.helpthem.live/donCampController/updateCampaign", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

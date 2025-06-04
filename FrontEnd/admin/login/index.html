@@ -12,7 +12,7 @@
   <!-- Navbar -->
    <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
   <div class="container" style="padding-inline: 20px;">
-    <a class="navbar-brand fw-bold" href="index.html" style="font-weight: 900;">helpthem.live</a>
+    <a class="navbar-brand fw-bold" href="../../index.html" style="font-weight: 900;">helpthem.live</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,17 +20,17 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="../../index.html">
             <span class="nav-link-inner">Home</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/FrontEnd/donate/index.html">
+          <a class="nav-link" href="../../donate/index.html">
             <span class="nav-link-inner">Donation</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/FrontEnd/about/index.html">
+          <a class="nav-link" href="../../about/index.html">
             <span class="nav-link-inner">About Us</span>
           </a>
         </li>
@@ -39,7 +39,7 @@
     </div>
 
      <div class="d-flex">
-        <a class="nav-link admin-login" href="/FrontEnd/admin/login/index.html">
+        <a class="nav-link admin-login" href="../admin/login/index.html">
           <i class="fas fa-user-shield me-2"></i>
           <span class="nav-link-inner"></span>
         </a>
@@ -90,7 +90,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
   sessionStorage.setItem('adminPassword', password);
   
   // Verify credentials by attempting to fetch protected data
-  fetch("https://donation-site-backend-e100d7fddae1.herokuapp.com/donController/getAll", {
+  fetch("https://api.helpthem.live/donController/getAll", {
     method: "GET",
     headers: {
       "site-admin-pass": password
