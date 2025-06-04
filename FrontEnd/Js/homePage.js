@@ -126,6 +126,7 @@ class DonationCampaign {
         document.getElementById('endDate').insertAdjacentHTML('afterend',
           '<span class="campaign-ended-badge">Ended</span>');
       }
+      
     } catch (e) {
       console.error('Error formatting dates:', e);
       document.getElementById('startDate').textContent = 'Not specified';
