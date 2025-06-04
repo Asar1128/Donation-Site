@@ -108,7 +108,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     if(data.token) {
       sessionStorage.setItem('adminToken', data.token);
     }
-    window.location.href = '/FrontEnd/admin/panel';
+    window.location.href = './admin/panel';
   })
   .catch(error => {
     sessionStorage.removeItem('adminPassword');
