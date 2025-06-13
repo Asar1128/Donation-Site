@@ -18,20 +18,9 @@ class DonationCampaign {
     try {
       const response = await fetch('https://api.helpthem.live/donCampController/getValidCampaign');
 
-      // if (!response.ok) {
-      //   console.log("404 responce check _ Response ")
-      //   if (response.status === 404) {
-      //     console.log("404 responce check")
-      //     // this.handleNoActiveCampaigns();
-      //     return null;
-      //   }
-      //   throw new Error(`HTTP error! status: ${response.status}`);
-      // }
-
       const data = await response.json();
 
       if(data.campaignID === "dummy"){
-        // alert("CHecking")
       }
 
       this.campaignID = data.campaignID;
@@ -143,6 +132,7 @@ class DonationCampaign {
   openDonationModal() {
     document.getElementById('donationModal').classList.add('active');
     document.body.classList.add('modal-open');
+    document.querySelector(".donation-modal").style.display='block'
   }
 
   closeDonationModal() {
@@ -212,6 +202,10 @@ class DonationCampaign {
     }
   }
 
+
+ShowSubmitDonation(){
+
+}
   showThankYouMessage(name, amount, anonymous) {
     const msg = `
       <div class="thank-you-message">

@@ -7,573 +7,525 @@
     <title>helpthem.live</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="Css/Style.css">
+    <link rel="stylesheet" href="./Css/Style.css">
 </head>
 
 <body>
-<!-- Navbar -->
-   <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
-  <div class="container" style="padding-inline: 20px;">
-    <a class="navbar-brand fw-bold" href="index.html" style="font-weight: 900;">helpthem.live</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">
-            <span class="nav-link-inner">Home</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="donate/index.html">
-            <span class="nav-link-inner">Donation</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about/index.html">
-            <span class="nav-link-inner">About Us</span>
-          </a>
-        </li>
-        
-      </ul>
-    </div>
-     <div class="d-flex">
-        <a class="nav-link admin-login" href="./admin/login/index.html">
-          <i class="fas fa-user-shield me-2"></i>
-          <span class="nav-link-inner"></span>
-        </a>
-      </div>
-  </div>
-</nav>
-
-<!-- Video Banner
-<div class="video-banner-container position-relative" style="max-height: 500px;">
-    <!-- Thumbnail Image (shown before video plays) -
-    <div id="videoThumbnail" class="video-thumbnail w-100 h-100 position-absolute">
-        <img src="https://img.youtube.com/vi/mMEq0r97T_k/maxresdefault.jpg" alt="Video thumbnail" class="w-100 h-100 object-fit-cover">
-        <div class="thumbnail-overlay d-flex flex-column align-items-center justify-content-center">
-            <button id="thumbnailPlayButton" class="btn-play-video">
-                <i class="fas fa-play"></i>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+        <div class="container navbar-Secondary" style="padding-inline: 20px;">
+            <a class="navbar-brand fw-bold" href="index.html" style="font-weight: 900;">helpthem.live</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <h1 class="banner-title mt-3" style="color: #fff;">Make a Difference Today</h1>
-            <p class="banner-subtitle">Watch Us Donating to needy people</p>
-        </div>
-    </div>
-    
-    Video Controls 
-    <div id="videoControls" class="video-controls position-absolute d-none">
-        <button id="pauseButton" class="btn-control">
-            <i class="fas fa-pause"></i>
-        </button>
-        <button id="replayButton" class="btn-control">
-            <i class="fas fa-redo"></i>
-        </button>
-        <button id="showThumbnailButton" class="btn-control">
-            <i class="fas fa-image"></i>
-        </button>
-    </div>
-    
-     Video (initially hidden) 
-    <div class="embed-responsive embed-responsive-21by9 h-100">
-        <iframe id="videoPlayer" class="embed-responsive-item" 
-                src="https://www.youtube.com/embed/mMEq0r97T_k?si=lifXH2TMFYUPKzFb&autoplay=0&mute=1&enablejsapi=1&rel=0" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-    </div>
-</div> -->
 
-<div class="banner-container">
-    <img src="Images/Banner_Image.jpg" alt="Website Banner" class="img-fluid banner-image">
-</div>
-    
-    <!-- Information Section  -->
-<div class="campaign-container">
-    <!-- Aid Banner Section -->
-    <div class="aid-banner">
-        <div class="banner-content-wrapper">
-            <div class="banner-image">
-                <img src="https://digitalupgrade.com/images/building_pic.jpg" alt="Campaign Recipient" class="banner-img">
-                <div class="image-overlay"></div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <span class="nav-link-inner">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="donate/index.html">
+                            <span class="nav-link-inner">Donation</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about/index.html">
+                            <span class="nav-link-inner">About Us</span>
+                        </a>
+                    </li>
+
+                </ul>
             </div>
-            <div class="banner-content">
-                <h1 id="candidateName" class="banner-title"></h1>
-                <p id="aboutCampaign" class="banner-description"></p>
-                <a href="AboutUs.html" class="banner-button">
-                
-                    <i class="fas fa-arrow-right"></i>
+            <div class="d-flex">
+                <a class="nav-link admin-login" href="./admin/login/index.html">
+                    <i class="fas fa-user-shield me-2"></i>
+                    <span class="nav-link-inner"></span>
                 </a>
             </div>
         </div>
+    </nav>
+
+    <div class="banner-container">
+        <img src="Images/Banner_Image-Update.webp" alt="Website Banner" class="img-fluid banner-image">
     </div>
 
-    <!-- Progress and Donation Section -->
-    <div class="progress-donation-section" id="donation_Form">
-        <div class="progress-card">
-            <h2 class="section-title"></h2>
-            <div class="progress-divider"></div>
-            
-            <div class="progress-info">
-                <div class="progress-label"></div>
-                <div class="progress-amount">
-                    <span class="collected-amount" id="collectedAmount">77,999Rs</span>
-                    <span class="goal-amount" id="goalAmount"></span>
+    <!-- Information Section  -->
+    <div class="campaign-container">
+        <!-- Aid Banner Section -->
+        <div class="aid-banner">
+            <div class="banner-content-wrapper">
+                <div class="banner-image">
+                    <img src="https://digitalupgrade.com/images/building_pic.jpg" alt="Campaign Recipient"
+                        class="banner-img">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="banner-content">
+                    <h1 id="candidateName" class="banner-title"></h1>
+                    <p id="aboutCampaign" class="banner-description"></p>
+                    <a href="AboutUs.html" class="banner-button">
+                        Read More
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
-            
-            <div class="progress-bar-container">
-                <div class="progress-bar" id="progressBar" style="width: 78%;"></div>
-                <div class="progress-percentage" id="progressPercentage"></div>
-            </div>
-            
-            <div class="progress-dates">
-                <div class="date-item">
-                    <span class="date-label">Start Date:</span>
-                    <span class="date-value" id="startDate"></span>
-                </div>
+        </div>
 
-
-                <div class="date-item">
-                    <span class="date-label">End Date:</span>
-                    <span class="date-value" id="endDate"></span>
-                </div>
-            </div>
-            
-            <button class="donate-button" onclick="openDonationModal()">
-                <i class="fas fa-heart"></i> Donate Now
-            </button>
-        </div>
-    </div>
-    <div id="postCampaignInfo" style="display: none;">
-  <!-- Content shown after campaign completes -->
-</div>
-    <!-- Donation Modal -->
-<div class="modal-overlay" id="donationModal">
-    <div class="donation-modal">
-        <div class="modal-header" style="  padding: 1.5rem;">
-            <h3>Make a Donation</h3>
-            <button class="close-modal" onclick="closeDonationModal()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <div class="modal-body" style="  padding: 1.5rem;">
-            <div class="form-group">
-                <label for="donorName">Your Name</label>
-                <input type="text" id="donorName" placeholder="Enter your full name">
-                <i class="fas fa-user"></i>
-            </div>
-            
-            <div class="form-group">
-                <label for="donationAmount">Donation Amount (Rs)</label>
-                <input type="number" id="donationAmount" placeholder="Enter amount">
-                <i class="fas fa-rupee-sign"></i>
-            </div>
-            
-            <div class="form-group checkbox-group">
-                <input type="checkbox" id="anonymousCheck">
-                <label for="anonymousCheck">Donate anonymously</label>
-            </div>
-            
-            <div class="quick-amounts">
-                <button class="quick-amount" onclick="setAmount(500)">500Rs</button>
-                <button class="quick-amount" onclick="setAmount(1000)">1000Rs</button>
-                <button class="quick-amount" onclick="setAmount(2000)">2000Rs</button>
-                <button class="quick-amount" onclick="setAmount(5000)">5000Rs</button>
-            </div>
-        </div>
-        
-        <div class="modal-footer" style="  padding: 1.5rem; justify-content:flex-start" >
-            <button class="submit-button" onclick="submitDonation()">
-                <i class="fas fa-paper-plane"></i> Submit Donation
-            </button>
-            <button class="cancel-button" onclick="closeDonationModal()">
-                <i class="fas fa-times"></i> Cancel
-            </button>
-        </div>
-    </div>
-</div>
-</div>
-    <!-- About us -->
-     <section class="campaign-container about-section pb-5 ">
-    <div class="about-section-secondary">
-        <div class="row justify-content-center">
-            <div>
-                <h2 class="section-title text-left ">About Us</h2>
+        <!-- Progress and Donation Section -->
+        <div class="progress-donation-section" id="donation_Form">
+            <div class="progress-card">
+                <h2 class="section-title">Donate Here</h2>
                 <div class="progress-divider"></div>
-                <div class="about-content">
-                    <p class="about-text lead">
-                        We are a dedicated team committed to making a positive impact in our community. 
-                        Founded on the principles of transparency and compassion, our organization 
-                        focuses on creating meaningful change through targeted initiatives and campaigns.
-                    </p>
-                    <p class="about-text">
-                        Since our establishment, we've successfully completed numerous projects that have 
-                        directly benefited thousands of individuals. Our approach combines innovative 
-                        solutions with grassroots engagement to address pressing social challenges.
-                    </p>
-                    <p class="about-text">
-                        What sets us apart is our commitment to accountability - every donation is tracked 
-                        and reported, ensuring donors see exactly how their contributions are making a 
-                        difference. We believe in the power of collective action and invite you to join 
-                        us in our mission to create a better future for all.
-                    </p>
+
+                <div class="progress-info">
+                    <div class="progress-label"></div>
+                    <div class="progress-amount">
+                        <span class="collected-amount" id="collectedAmount"></span>
+                        <span class="goal-amount" id="goalAmount"></span>
+                    </div>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                    <div class="progress-percentage" id="progressPercentage"></div>
+                </div>
+
+                <div class="progress-dates">
+                    <div class="date-item">
+                        <span class="date-label">Start Date:</span>
+                        <span class="date-value" id="startDate"></span>
+                    </div>
+
+
+                    <div class="date-item">
+                        <span class="date-label">End Date:</span>
+                        <span class="date-value" id="endDate"></span>
+                    </div>
+                </div>
+
+                <button class="donate-button" onclick="openDonationModal()">
+                    <i class="fas fa-heart"></i> Donate Now
+                </button>
+            </div>
+        </div>
+        <div id="postCampaignInfo" style="display: none;">
+            <!-- Content shown after campaign completes -->
+        </div>
+        <!-- Donation Modal -->
+        <div class="modal-overlay" id="donationModal">
+            <div class="donation-modal">
+                <!-- Modal Header -->
+                <div class="modal-header" style="padding: 1.5rem;">
+                    <h3>Make a Donation</h3>
+                    <button class="close-modal" onclick="closeDonationModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body" style="padding: 1.5rem; padding-bottom: 0;">
+                    <!-- Donation Form -->
+                    <div class="form-group">
+                        <label for="donorName">Your Name</label>
+                        <input type="text" id="donorName" placeholder="Enter your full name">
+                        <i class="fas fa-user"></i>
+                        <div class="invalid-feedback">Please provide your name</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="donationAmount">Donation Amount (Rs)</label>
+                        <input type="number" id="donationAmount" placeholder="Enter amount">
+                        <i class="fas fa-rupee-sign"></i>
+                        <div class="invalid-feedback">Please enter a valid amount</div>
+                    </div>
+
+                    <div class="form-group checkbox-group" style="margin-bottom: 0;">
+                        <input type="checkbox" id="anonymousCheck">
+                        <label for="anonymousCheck">Donate anonymously</label>
+                    </div>
+
+                    <div class="quick-amounts">
+                        <button type="button" class="quick-amount" onclick="setAmount(500)">500Rs</button>
+                        <button type="button" class="quick-amount" onclick="setAmount(1000)">1000Rs</button>
+                        <button type="button" class="quick-amount" onclick="setAmount(2000)">2000Rs</button>
+                        <button type="button" class="quick-amount" onclick="setAmount(5000)">5000Rs</button>
+                    </div>
+                </div>
+                <div id="overlay"
+                    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999;">
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer" style="padding: 1.5rem; justify-content: flex-start;">
+                    <button type="button" class="submit-button" id="PaymentPopUp">
+                        <i class="fas fa-paper-plane"></i> Submit Donation
+                    </button>
+                    <button type="button" class="cancel-button" onclick="closeDonationModal()">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-</section>
-<!-- About Us Ends -->
+     <!-- Payment Information Popup (initially hidden) -->
+                <div id="paymentInfoPopup" class="payment-info-popup"
+                    style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 1000; max-width: 500px; width: 90%;">
+                    <div class="payment-info-section" style="margin-bottom: 1.5rem;">
+                        <h4
+                            style="margin-bottom: 0.5rem; color: #2c3e50; display: flex; align-items: center; gap: 8px;">
+                            <i class="fas fa-university"></i> Bank Transfer Details
+                        </h4>
+                        <div style="margin-bottom: 0.3rem;">
+                            <strong>Account Number:</strong> 1234 5678 9012 3456
+                        </div>
+                        <div style="margin-bottom: 0.3rem;">
+                            <strong>Account Name:</strong> Charity Foundation
+                        </div>
+                        <div style="margin-bottom: 0.3rem;">
+                            <strong>Bank Name:</strong> Example Bank
+                        </div>
+                        <div style="margin-bottom: 0.3rem;">
+                            <strong>IFSC Code:</strong> ABCD0123456
+                        </div>
+                        <div
+                            style="font-size: 0.85em; color: #7f8c8d; margin-top: 0.5rem; display: flex; align-items: center; gap: 5px;">
+                            <i class="fas fa-info-circle"></i> You can make direct transfers to this account
+                        </div>
+                    </div>
+                    <button id="closePaymentPopup"
+                        style="margin-top: 1rem; padding: 0.5rem 1rem; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                        Close
+                    </button>
+                </div>
+    <!-- About us -->
+    <section class="campaign-container about-section pb-5 ">
+        <div class="about-section-secondary">
+            <div class="row justify-content-center">
+                <div>
+                    <div class="about-content">
+                          <div class="aboutUs-heading-container">
+                       <h2 class="section-title text-left ">About Us</h2>
+                    <div class="progress-divider"></div>
+                 </div>
+                        <p class="about-text lead">
+                            We are a dedicated team committed to making a positive impact in our community.
+                            Founded on the principles of transparency and compassion, our organization
+                            focuses on creating meaningful change through targeted initiatives and campaigns.
+                        </p>
+                        <p class="about-text">
+                            Since our establishment, we've successfully completed numerous projects that have
+                            directly benefited thousands of individuals. Our approach combines innovative
+                            solutions with grassroots engagement to address pressing social challenges.
+                        </p>
+                        <p class="about-text">
+                            What sets us apart is our commitment to accountability - every donation is tracked
+                            and reported, ensuring donors see exactly how their contributions are making a
+                            difference. We believe in the power of collective action and invite you to join
+                            us in our mission to create a better future for all.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Us Ends -->
 
-<footer class="custom-footer pt-4">
-    <!-- CDN Links -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <footer class="custom-footer pt-4">
+        <!-- CDN Links -->
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <div class="container">
-        <div class="row g-4" style="padding: 20px;">
-            <!-- About Section -->
-            <div class="col-lg-3 col-md-6">
-                <h5 class="footer-heading mb-3">About Us</h5>
-                <p class="footer-text small">Your company description goes here. Provide brief information about your business.</p>
-                <!-- <div class="social-icons">
+        <div class="container">
+            <div class="row g-4" style="padding: 20px;">
+                <!-- About Section -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-heading mb-3">About Us</h5>
+                    <p class="footer-text small">Your company description goes here. Provide brief information about
+                        your business.</p>
+                    <!-- <div class="social-icons">
                     <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
                     <a href="#" class="social-link"><i class="fab fa-github"></i></a>
                 </div> -->
-            </div>
+                </div>
 
-            <!-- Enhanced Quick Links -->
-            <div class="col-lg-3 col-md-6">
-                <h5 class="footer-heading mb-3">Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li class="mb-2">
-                        <a href="/index.html" class="footer-link">
-                            <span class="link-text">Home</span>
-                            <i class="bi bi-arrow-right-short link-icon"></i>
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="/FrontEnd/about/index.html" class="footer-link">
-                            <span class="link-text">About</span>
-                            <i class="bi bi-arrow-right-short link-icon"></i>
-                        </a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="/FrontEnd/donate/index.html" class="footer-link">
-                            <span class="link-text">Donations</span>
-                            <i class="bi bi-arrow-right-short link-icon"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                <!-- Enhanced Quick Links -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-heading mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="/index.html" class="footer-link">
+                                <span class="link-text">Home</span>
+                                <i class="bi bi-arrow-right-short link-icon"></i>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="/FrontEnd/about/index.html" class="footer-link">
+                                <span class="link-text">About</span>
+                                <i class="bi bi-arrow-right-short link-icon"></i>
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="/FrontEnd/donate/index.html" class="footer-link">
+                                <span class="link-text">Donations</span>
+                                <i class="bi bi-arrow-right-short link-icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-            <!-- Contact Info -->
-            <div class="col-lg-3 col-md-6">
-                <h5 class="footer-heading mb-3">Contact</h5>
-                <ul class="list-unstyled footer-text small">
-                    <li class="mb-2">
-                        <i class="bi bi-geo-alt-fill me-2"></i>
-                        123 Street, City, Country
-                    </li>
-                    <li class="mb-2">
-                        <i class="bi bi-telephone-fill me-2"></i>
-                        +1 234 567 890
-                    </li>
-                    <li class="mb-2">
-                        <i class="bi bi-envelope-fill me-2"></i>
-                        info@example.com
-                    </li>
-                </ul>
-            </div>
+                <!-- Contact Info -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-heading mb-3">Contact</h5>
+                    <ul class="list-unstyled footer-text small">
+                        <li class="mb-2">
+                            <i class="bi bi-geo-alt-fill me-2"></i>
+                            123 Street, City, Country
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-telephone-fill me-2"></i>
+                            +1 234 567 890
+                        </li>
+                        <li class="mb-2">
+                            <i class="bi bi-envelope-fill me-2"></i>
+                            info@example.com
+                        </li>
+                    </ul>
+                </div>
 
-            <!-- Newsletter -->
-            <div class="col-lg-3 col-md-6">
-                <h5 class="footer-heading mb-3">Newsletter</h5>
-                <form class="newsletter-form">
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control form-control-sm" placeholder="Enter email">
-                        <button class="btn btn-primary btn-sm" type="button">
-                            <i class="bi bi-send-fill"></i>
+                <!-- Newsletter -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-heading mb-3">Newsletter</h5>
+                    <form class="newsletter-form">
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control form-control-sm" placeholder="Enter email">
+                            <button class="btn btn-primary btn-sm" type="button">
+                                <i class="bi bi-send-fill"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="scroll-top text-end">
+                        <button class="btn-scroll-top">
+                            <i class="bi bi-arrow-up-circle-fill"></i>
                         </button>
                     </div>
-                </form>
-                <div class="scroll-top text-end">
-                    <button class="btn-scroll-top">
-                        <i class="bi bi-arrow-up-circle-fill"></i>
-                    </button>
                 </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3 mt-4 border-top">
+                <small class="footer-text">
+                    © 2025 Your Brand. All rights reserved.
+                    <span class="d-block d-sm-inline">Privacy | Terms</span>
+                </small>
             </div>
         </div>
 
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3 mt-4 border-top">
-            <small class="footer-text">
-                © 2025 Your Brand. All rights reserved. 
-                <span class="d-block d-sm-inline">Privacy | Terms</span>
-            </small>
-        </div>
-    </div>
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <style>
+            :root {
+                --primary-color: #2196F3;
+                --secondary-color: #f8f9fa;
+                --text-color: #333333;
+                --light-gray: #f5f5f5;
+            }
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        :root {
-            --primary-color: #2196F3;
-            --secondary-color: #f8f9fa;
-            --text-color: #333333;
-            --light-gray: #f5f5f5;
-        }
+            .custom-footer {
+                background-color: white;
+                color: var(--text-color);
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            }
 
-        .custom-footer {
-            background-color: white;
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-        }
+            .footer-heading {
+                color: var(--primary-color) !important;
+                font-weight: 600;
+                font-size: 1.1rem;
+                padding-bottom: 0.5rem;
+                position: relative;
+                display: inline-block;
+            }
 
-        .footer-heading {
-            color: var(--primary-color) !important;
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding-bottom: 0.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-heading:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50%;
-            height: 2px;
-            background-color: var(--primary-color);
-        }
-
-        .footer-text {
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        .footer-link {
-            color: var(--text-color) !important;
-            text-decoration: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .footer-link:hover {
-            color: var(--primary-color) !important;
-            padding-left: 5px;
-        }
-
-        .link-icon {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            opacity: 0;
-        }
-
-        .footer-link:hover .link-icon {
-            opacity: 1;
-            transform: translateX(3px);
-        }
-
-        .social-link {
-            color: var(--text-color) !important;
-            margin-right: 1rem;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            color: var(--primary-color) !important;
-            transform: scale(1.2);
-        }
-
-        .btn-scroll-top {
-            border: none;
-            background: none;
-            color: var(--primary-color);
-            font-size: 1.8rem;
-            transition: all 0.3s ease;
-        }
-
-        .btn-scroll-top:hover {
-            transform: scale(1.1);
-        }
-
-        .newsletter-form .form-control {
-            border-radius: 0;
-            border: 1px solid #ddd;
-            border-right: none;
-        }
-
-        .newsletter-form .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            border-radius: 0;
-        }
-
-        .newsletter-form .form-control:focus {
-            box-shadow: none;
-            border-color: var(--primary-color);
-        }
-
-        .footer-copyright {
-            color: var(--text-color);
-            font-size: 0.85rem;
-        }
-
-        .footer-copyright a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
             .footer-heading:after {
-                width: 30%;
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 50%;
+                height: 2px;
+                background-color: var(--primary-color);
             }
-            
-            .social-icons {
-                justify-content: center;
-            }
-        }
-    </style>
-    <script>
-        // Smooth scroll to top
-        document.querySelector('.btn-scroll-top').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
 
-        // Add animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                    }
+            .footer-text {
+                color: var(--text-color);
+                line-height: 1.6;
+            }
+
+            .footer-link {
+                color: var(--text-color) !important;
+                text-decoration: none;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem 0;
+                transition: all 0.3s ease;
+                font-weight: 500;
+            }
+
+            .footer-link:hover {
+                color: var(--primary-color) !important;
+                padding-left: 5px;
+            }
+
+            .link-icon {
+                color: var(--primary-color);
+                font-size: 1.2rem;
+                transition: all 0.3s ease;
+                opacity: 0;
+            }
+
+            .footer-link:hover .link-icon {
+                opacity: 1;
+                transform: translateX(3px);
+            }
+
+            .social-link {
+                color: var(--text-color) !important;
+                margin-right: 1rem;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+            }
+
+            .social-link:hover {
+                color: var(--primary-color) !important;
+                transform: scale(1.2);
+            }
+
+            .btn-scroll-top {
+                border: none;
+                background: none;
+                color: var(--primary-color);
+                font-size: 1.8rem;
+                transition: all 0.3s ease;
+            }
+
+            .btn-scroll-top:hover {
+                transform: scale(1.1);
+            }
+
+            .newsletter-form .form-control {
+                border-radius: 0;
+                border: 1px solid #ddd;
+                border-right: none;
+            }
+
+            .newsletter-form .btn-primary {
+                background-color: var(--primary-color);
+                border-color: var(--primary-color);
+                border-radius: 0;
+            }
+
+            .newsletter-form .form-control:focus {
+                box-shadow: none;
+                border-color: var(--primary-color);
+            }
+
+            .footer-copyright {
+                color: var(--text-color);
+                font-size: 0.85rem;
+            }
+
+            .footer-copyright a {
+                color: var(--primary-color);
+                text-decoration: none;
+            }
+
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .footer-heading:after {
+                    width: 30%;
+                }
+
+                .social-icons {
+                    justify-content: center;
+                }
+            }
+        </style>
+        <script>
+         document.addEventListener('DOMContentLoaded', function() {
+    const submitBtn = document.getElementById('PaymentPopUp');
+    const paymentInfoPopup = document.getElementById('paymentInfoPopup');
+    const closePaymentPopup = document.getElementById('closePaymentPopup');
+    const overlay = document.getElementById('overlay');
+    const DonnationModel = document.querySelector(".donation-modal")
+    const ModelOverlay= document.querySelector('.modal-overlay')
+    
+    // Show payment info popup when submit is clicked
+    submitBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+       DonnationModel.style.display='none'
+        const donorName = document.getElementById('donorName').value;
+        const donationAmount = document.getElementById('donationAmount').value;
+        
+        if (!donorName || !donationAmount) {
+            alert('Please fill in all required fields');
+            return;
+        }
+        
+        // Show the popup and overlay
+        paymentInfoPopup.style.display = 'block';
+        overlay.style.display = 'block';
+    });
+    
+    // Close payment info popup
+    closePaymentPopup.addEventListener('click', function() {
+        paymentInfoPopup.style.display = 'none';
+        overlay.style.display = 'none';
+        ModelOverlay.style.opacity="0"
+         document.body.style.overflow = 'auto';
+    });
+    
+    // Quick amount buttons functionality
+    window.setAmount = function(amount) {
+        document.getElementById('donationAmount').value = amount;
+    };
+});
+
+        </script>
+        <script>
+            // Smooth scroll to top
+            document.querySelector('.btn-scroll-top').addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
             });
 
-            document.querySelectorAll('.footer-link').forEach((element) => {
-                observer.observe(element);
+            // Add animation on scroll
+            document.addEventListener('DOMContentLoaded', function () {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate');
+                        }
+                    });
+                });
+
+                document.querySelectorAll('.footer-link').forEach((element) => {
+                    observer.observe(element);
+                });
             });
-        });
-    </script>
-  <!-- <script>
-    // Load YouTube API
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        </script>
 
-    // Global variable for player instance
-    var player;
-
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('videoPlayer', {
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-        });
-    }
-
-    function onPlayerReady(event) {
-        // Player is ready
-    }
-
-    function onPlayerStateChange(event) {
-        const videoControls = document.getElementById('videoControls');
-        const videoThumbnail = document.getElementById('videoThumbnail');
-        
-        if (event.data == YT.PlayerState.PLAYING) {
-            videoThumbnail.style.opacity = '0';
-            setTimeout(() => {
-                videoThumbnail.style.display = 'none';
-            }, 500);
-            videoControls.classList.remove('d-none');
-        } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
-            videoControls.classList.remove('d-none');
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const thumbnailPlayButton = document.getElementById('thumbnailPlayButton');
-        const pauseButton = document.getElementById('pauseButton');
-        const replayButton = document.getElementById('replayButton');
-        const showThumbnailButton = document.getElementById('showThumbnailButton');
-        const videoThumbnail = document.getElementById('videoThumbnail');
-        const videoControls = document.getElementById('videoControls');
-
-        // Play video from thumbnail
-        thumbnailPlayButton.addEventListener('click', function() {
-            if (player) {
-                player.playVideo();
-                player.unMute();
-            }
-        });
-
-        // Pause video
-        pauseButton.addEventListener('click', function() {
-            if (player) {
-                player.pauseVideo();
-            }
-        });
-
-        // Replay video
-        replayButton.addEventListener('click', function() {
-            if (player) {
-                player.seekTo(0);
-                player.playVideo();
-                player.unMute();
-            }
-        });
-
-        // Show thumbnail again
-        showThumbnailButton.addEventListener('click', function() {
-            if (player) {
-                player.pauseVideo();
-                videoThumbnail.style.display = 'block';
-                setTimeout(() => {
-                    videoThumbnail.style.opacity = '1';
-                }, 10);
-            }
-        });
-
-        // Show controls on hover
-        document.querySelector('.video-banner-container').addEventListener('mouseenter', function() {
-            if (player && player.getPlayerState() !== YT.PlayerState.UNSTARTED) {
-                videoControls.classList.remove('d-none');
-            }
-        });
-
-        // Hide controls after delay
-        document.querySelector('.video-banner-container').addEventListener('mouseleave', function() {
-            setTimeout(() => {
-                if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
-                    videoControls.classList.add('d-none');
-                }
-            }, 2000);
-        });
-    });
-</script> -->
-</footer>
+    </footer>
     <!-- Bootstrap + jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
@@ -581,4 +533,5 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./Js/Navbar.js"></script>
 </body>
+
 </html>
