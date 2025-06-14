@@ -221,17 +221,13 @@ ShowSubmitDonation(){
   CampaignCompleted(collectedAmount, goalAmount, campaignData) {
     const form = document.getElementById('donation_Form');
     const postContainer = document.getElementById('postCampaignInfo');
-    const completed = collectedAmount >= goalAmount;
-    const ended = new Date() > new Date(campaignData.endDate);
+    const completed = collectedAmount >= goalAmount
 
-    if (completed || ended) {
+    if (completed) {
       if (form) form.style.display = "none";
       if (postContainer) postContainer.style.display = "block";
 
-      if (ended) {
-        document.getElementById('candidateName').textContent = 'Updating';
-        document.getElementById('aboutCampaign').textContent = 'Updating';
-      }
+
 
       if (!document.querySelector('.campaign-completed-message')) {
         const msg = document.createElement('div');

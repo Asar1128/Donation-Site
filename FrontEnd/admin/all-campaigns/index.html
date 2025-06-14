@@ -118,6 +118,8 @@
     
     /* Modal styling */
     .modal-overlay {
+          opacity: 1;
+        visibility: visible;
       display: none;
       position: fixed;
       top: 0;
@@ -323,12 +325,13 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const password = prompt("Enter admin password:");
     let allCampaigns = [];
-
+       let password = sessionStorage.getItem('adminPassword');
     function fetchCampaigns() {
       fetch("https://api.helpthem.live/donCampController", {
-        headers: { "site-admin-pass": password }
+        headers: { 
+          "site-admin-pass": password
+         }
       })
       .then(res => res.json())
       .then(data => {
@@ -417,11 +420,7 @@
     }
 
    async function deleteCampaign(id) {
-  // Verify admin authentication
-  if (!password) {
-    alert("Admin authentication required");
-    return;
-  }
+  
 
   console.log("Attempting to delete campaign with ID:", id);
   
@@ -461,6 +460,7 @@
 }
 
     function editCampaign(id) {
+      console.log("Campaign Edit")
       const campaign = allCampaigns.find(c => c.campaignID === id);
       if (!campaign) return alert("Campaign not found.");
 
@@ -475,6 +475,7 @@
       document.getElementById("updateIsEnded").value = String(campaign.isEnded);
 
       document.getElementById("updateModal").style.display = "flex";
+      console.log("Campaign Edit End")
     }
 
     function closeModal() {

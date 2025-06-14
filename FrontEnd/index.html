@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="./Css/Style.css">
+
+    <!-- Pre Loads -->
+     <link rel="preload" href="Images/Banner_Image-Update.webp" as="image/webp">
 </head>
 
 <body>
@@ -50,7 +53,7 @@
     </nav>
 
     <div class="banner-container">
-        <img src="Images/Banner_Image-Update.webp" alt="Website Banner" class="img-fluid banner-image">
+        <img src="Images/Banner_Image-Update.webp" alt="Website Banner" class="img-fluid banner-image" width="375" height="375" loading="lazy">
     </div>
 
     <!-- Information Section  -->
@@ -160,8 +163,8 @@
 
                 <!-- Modal Footer -->
                 <div class="modal-footer" style="padding: 1.5rem; justify-content: flex-start;">
-                    <button type="button" class="submit-button" id="PaymentPopUp">
-                        <i class="fas fa-paper-plane"></i> Submit Donation
+                    <button type="button" class="submit-button" id="PaymentPopUp" >
+                        <i class="fas fa-paper-plane"></i> Proceed to Payment
                     </button>
                     <button type="button" class="cancel-button" onclick="closeDonationModal()">
                         <i class="fas fa-times"></i> Cancel
@@ -195,10 +198,15 @@
                             <i class="fas fa-info-circle"></i> You can make direct transfers to this account
                         </div>
                     </div>
+                    <div class="d-flex">
+                         <button type="button" class="submit-button" onclick="submitDonation()">
+                        <i class="fas fa-paper-plane"></i> Submit Donation
+                    </button>
                     <button id="closePaymentPopup"
                         style="margin-top: 1rem; padding: 0.5rem 1rem; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer;">
                         Close
                     </button>
+                    </div>
                 </div>
     <!-- About us -->
     <section class="campaign-container about-section pb-5 ">
