@@ -131,13 +131,13 @@ class DonationCampaign {
 
   openDonationModal() {
     document.getElementById('donationModal').classList.add('active');
-    document.body.classList.add('modal-open');
+    // document.body.classList.add('modal-open');
     // document.querySelector(".donation-modal").style.display='block'
   }
 
   closeDonationModal() {
     document.getElementById('donationModal').classList.remove('active');
-    document.body.classList.remove('modal-open');
+    // document.body.classList.remove('modal-open');
     this.resetDonationForm();
   }
 
