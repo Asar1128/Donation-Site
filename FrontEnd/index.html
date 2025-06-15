@@ -4,13 +4,216 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" sizes="32x32" href="././Images/Site-Favicon-square.webp" type="image/x-icon">
     <title>helpthem.live</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="./Css/Style.css">
 
     <!-- Pre Loads -->
-     <link rel="preload" href="Images/Banner_Image-Update.webp" as="image/webp">
+    <link rel="preload" href="Images/Banner_Image-Update.webp" as="image/webp">
+       <style>
+        /* Unique popup styles */
+        .donation-submission-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .donation-submission-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .donation-submission-content {
+            background-color: #fff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 420px;
+            width: 90%;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Unique loader styles */
+        .donation-submission-loader {
+            width: 60px;
+            height: 60px;
+            margin: 1.5rem auto;
+            border: 6px solid #f0f0f0;
+            border-top: 6px solid #4285f4;
+            border-radius: 50%;
+            animation: donationSpin 1.2s linear infinite;
+        }
+        
+        @keyframes donationSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .donation-submission-message {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .donation-submission-close-btn {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: none; /* Hidden by default */
+        }
+        
+        .donation-submission-close-btn:hover {
+            background-color: #3367d6;
+        }
+        .easypaisa-payment-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  max-width: 500px;
+  width: 90%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2d3436;
+  animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translate(-50%, -60%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+.easypaisa-popup-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.easypaisa-popup-header h3 {
+  font-size: 1.5rem;
+  color: #27ae60;
+  margin-top: 0.5rem;
+}
+
+.easypaisa-popup-header p {
+  font-size: 0.95rem;
+  color: #636e72;
+}
+
+.secure-icon {
+  font-size: 2rem;
+  color: #27ae60;
+}
+
+.easypaisa-payment-details {
+  border-left: 4px solid #27ae60;
+  padding-left: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.easypaisa-payment-details div {
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+.easypaisa-payment-details strong {
+  font-weight: 600;
+  color: #2d3436;
+}
+
+.info-note {
+  font-size: 0.88rem;
+  color: #7f8c8d;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0.5rem;
+}
+
+.easypaisa-instructions {
+  background: #f0fdf4;
+  padding: 0.75rem 1rem;
+  border-left: 4px solid #2ecc71;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  font-size: 0.92rem;
+}
+
+.easypaisa-popup-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.easypaisa-submit-btn {
+  flex: 1;
+  background-color: #2ecc71;
+  color: white;
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+.easypaisa-submit-btn:hover {
+  background-color: #27ae60;
+}
+
+.easypaisa-close-btn {
+  flex: 1;
+  background-color: #d63031;
+  color: white;
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+}
+
+.easypaisa-close-btn:hover {
+  background-color: #c0392b;
+}
+
+    </style>
+
 </head>
 
 <body>
@@ -53,7 +256,8 @@
     </nav>
 
     <div class="banner-container">
-        <img src="Images/Banner_Image-Update.webp" alt="Website Banner" class="img-fluid banner-image" width="375" height="375" loading="lazy">
+        <img src="Images/Banner_Image-Update.webp" alt="Website Banner" class="img-fluid banner-image" width="375"
+            height="375" loading="lazy">
     </div>
 
     <!-- Information Section  -->
@@ -163,7 +367,7 @@
 
                 <!-- Modal Footer -->
                 <div class="modal-footer" style="padding: 1.5rem; justify-content: flex-start;">
-                    <button type="button" class="submit-button" id="PaymentPopUp" >
+                    <button type="button" class="submit-button" id="PaymentPopUp">
                         <i class="fas fa-paper-plane"></i> Proceed to Payment
                     </button>
                     <button type="button" class="cancel-button" onclick="closeDonationModal()">
@@ -173,66 +377,117 @@
             </div>
         </div>
     </div>
-     <!-- Payment Information Popup (initially hidden) -->
-                <div id="paymentInfoPopup" class="payment-info-popup"
-                    style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 1000; max-width: 500px; width: 90%;">
-                    <div class="payment-info-section" style="margin-bottom: 1.5rem;">
-                        <h4
-                            style="margin-bottom: 0.5rem; color: #2c3e50; display: flex; align-items: center; gap: 8px;">
-                            <i class="fas fa-university"></i> Bank Transfer Details
-                        </h4>
-                        <div style="margin-bottom: 0.3rem;">
-                            <strong>Account Number:</strong> 1234 5678 9012 3456
-                        </div>
-                        <div style="margin-bottom: 0.3rem;">
-                            <strong>Account Name:</strong> Charity Foundation
-                        </div>
-                        <div style="margin-bottom: 0.3rem;">
-                            <strong>Bank Name:</strong> Example Bank
-                        </div>
-                        <div style="margin-bottom: 0.3rem;">
-                            <strong>IFSC Code:</strong> ABCD0123456
-                        </div>
-                        <div
-                            style="font-size: 0.85em; color: #7f8c8d; margin-top: 0.5rem; display: flex; align-items: center; gap: 5px;">
-                            <i class="fas fa-info-circle"></i> You can make direct transfers to this account
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                         <button type="button" class="submit-button" onclick="submitDonation()">
-                        <i class="fas fa-paper-plane"></i> Submit Donation
-                    </button>
-                    <button id="closePaymentPopup"
-                        style="margin-top: 1rem; padding: 0.5rem 1rem; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                        Close
-                    </button>
-                    </div>
-                </div>
+    <!-- Payment Information Popup (initially hidden)
+    <div id="paymentInfoPopup" class="payment-info-popup"
+        style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); z-index: 1000; max-width: 500px; width: 90%;">
+        <div class="payment-info-section" style="margin-bottom: 1.5rem;">
+            <h4 style="margin-bottom: 0.5rem; color: #2c3e50; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-university"></i> Bank Transfer Details
+            </h4>
+            <div style="margin-bottom: 0.3rem;">
+                <strong>Account Number:</strong> 1234 5678 9012 3456
+            </div>
+            <div style="margin-bottom: 0.3rem;">
+                <strong>Account Name:</strong> Charity Foundation
+            </div>
+            <div style="margin-bottom: 0.3rem;">
+                <strong>Bank Name:</strong> Example Bank
+            </div>
+            <div style="margin-bottom: 0.3rem;">
+                <strong>IFSC Code:</strong> ABCD0123456
+            </div>
+            <div
+                style="font-size: 0.85em; color: #7f8c8d; margin-top: 0.5rem; display: flex; align-items: center; gap: 5px;">
+                <i class="fas fa-info-circle"></i> You can make direct transfers to this account
+            </div>
+        </div>
+        <div class="d-flex">
+            <button type="button" class="submit-button" onclick="submitDonation()" id="submit-btn-close">
+                <i class="fas fa-paper-plane"></i> Submit Donation
+            </button>
+            <button id="closePaymentPopup"
+                style="margin-top: 1rem; padding: 0.5rem 1rem; background: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer;">
+                Close
+            </button>
+        </div>
+    </div> -->
+    <!-- Easypaisa-Style Payment Popup -->
+<div id="paymentInfoPopup" class="easypaisa-payment-popup">
+  <div class="easypaisa-popup-header">
+    <i class="fas fa-lock secure-icon"></i>
+    <h3>Secure Bank Transfer</h3>
+    <p>Your donation will be safely processed via Easypaisa-compatible bank transfer.</p>
+  </div>
+
+  <div class="easypaisa-payment-details">
+    <div><strong>Account Number:</strong>03331597551</div>
+    <div><strong>Account Name:</strong>Wajih Abdullah</div>
+    <div><strong>Bank Name:</strong>Easy Paisa</div>
+    <!-- <div><strong>IFSC Code:</strong> ABCD0123456</div> -->
+    <div class="info-note">
+      <i class="fas fa-info-circle"></i>
+     <p>    Please dont click <span style="font-weight: bold;">Complete Button</span> if you didnt made transfer to the account</p>
+    </div>
+  </div>
+
+  <div class="easypaisa-instructions">
+    <p><strong>Note:</strong> Once the payment is made, click on <em>Complete button</em> to confirm your donation request.</p>
+  </div>
+
+  <div class="easypaisa-popup-actions">
+    <button type="button" class="easypaisa-submit-btn" onclick="submitDonation()" id="submit-btn-close">
+      <i class="fas fa-paper-plane"></i> Complete Donation
+    </button>
+    <button id="closePaymentPopup" class="easypaisa-close-btn">
+      Cancel
+    </button>
+  </div>
+</div>
+     <!-- Popup markup -->
+    <div class="donation-submission-overlay" id="donationSubmissionPopup">
+        <div class="donation-submission-content">
+            <div class="donation-submission-message">
+                Thank you for your donation! Please wait until the admin approves your contribution.
+            </div>
+            <div class="donation-submission-loader" id="donationSubmissionLoader"></div>
+            <button class="donation-submission-close-btn" id="donationCloseBtn">Close</button>
+        </div>
+    </div>
+
     <!-- About us -->
     <section class="campaign-container about-section pb-5 ">
         <div class="about-section-secondary">
             <div class="row justify-content-center">
                 <div>
                     <div class="about-content">
-                          <div class="aboutUs-heading-container">
-                       <h2 class="section-title text-left ">About Us</h2>
-                    <div class="progress-divider"></div>
-                 </div>
-                        <p class="about-text lead">
-                            We are a dedicated team committed to making a positive impact in our community.
-                            Founded on the principles of transparency and compassion, our organization
-                            focuses on creating meaningful change through targeted initiatives and campaigns.
+                        <div class="aboutUs-heading-container">
+                            <h2 class="section-title text-left ">About Us</h2>
+                            <div class="progress-divider"></div>
+                        </div>
+                        <p class="about-text lead" style="font-style: italic;">
+                            "They ˹are those who˺ fulfil ˹their˺ vows and fear a Day of sweeping horror, and give
+                            food—despite their desire for it—to the poor, the orphan, and the captive, ˹saying to
+                            themselves,˺ “We feed you only for the sake of Allah, seeking neither reward nor thanks from
+                            you. We fear from our Lord a horribly distressful Day.””
+                            <br>
+                            —Qur'an 76:7–10
+
                         </p>
+                        
                         <p class="about-text">
-                            Since our establishment, we've successfully completed numerous projects that have
-                            directly benefited thousands of individuals. Our approach combines innovative
-                            solutions with grassroots engagement to address pressing social challenges.
+                            We’re a group of students driven by the belief that those who are blessed should uplift
+                            others in their community. Our goal is to create a platform where people can come together
+                            and help those in need.
+                            <br>
+                            To ensure accountability and transparency, we’re committed to sharing proof of every
+                            donation we receive. Each transaction is recorded and publicly displayed on our donations
+                            page, allowing donors to see exactly how their contributions are being used. We believe that
+                            trust is built through honesty — and we’re here to earn it. May Allah help us
+                            in this mission.
+
                         </p>
-                        <p class="about-text">
-                            What sets us apart is our commitment to accountability - every donation is tracked
-                            and reported, ensuring donors see exactly how their contributions are making a
-                            difference. We believe in the power of collective action and invite you to join
-                            us in our mission to create a better future for all.
+                        <p class="about-text lead" style="font-weight: 900; font-style:italic;">
+                            Helping people, one person at a time.
                         </p>
                     </div>
                 </div>
@@ -241,245 +496,111 @@
     </section>
     <!-- About Us Ends -->
 
-    <footer class="custom-footer pt-4">
-        <!-- CDN Links -->
-        <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <footer class="custom-footer">
 
-        <div class="container">
-            <div class="row g-4" style="padding: 20px;">
-                <!-- About Section -->
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="footer-heading mb-3">About Us</h5>
-                    <p class="footer-text small">Your company description goes here. Provide brief information about
-                        your business.</p>
-                    <!-- <div class="social-icons">
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                </div> -->
-                </div>
-
-                <!-- Enhanced Quick Links -->
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="footer-heading mb-3">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2">
-                            <a href="/index.html" class="footer-link">
-                                <span class="link-text">Home</span>
-                                <i class="bi bi-arrow-right-short link-icon"></i>
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="/FrontEnd/about/index.html" class="footer-link">
-                                <span class="link-text">About</span>
-                                <i class="bi bi-arrow-right-short link-icon"></i>
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="/FrontEnd/donate/index.html" class="footer-link">
-                                <span class="link-text">Donations</span>
-                                <i class="bi bi-arrow-right-short link-icon"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Contact Info -->
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="footer-heading mb-3">Contact</h5>
-                    <ul class="list-unstyled footer-text small">
-                        <li class="mb-2">
-                            <i class="bi bi-geo-alt-fill me-2"></i>
-                            123 Street, City, Country
-                        </li>
-                        <li class="mb-2">
-                            <i class="bi bi-telephone-fill me-2"></i>
-                            +1 234 567 890
-                        </li>
-                        <li class="mb-2">
-                            <i class="bi bi-envelope-fill me-2"></i>
-                            info@example.com
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Newsletter -->
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="footer-heading mb-3">Newsletter</h5>
-                    <form class="newsletter-form">
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control form-control-sm" placeholder="Enter email">
-                            <button class="btn btn-primary btn-sm" type="button">
-                                <i class="bi bi-send-fill"></i>
-                            </button>
-                        </div>
-                    </form>
-                    <div class="scroll-top text-end">
-                        <button class="btn-scroll-top">
-                            <i class="bi bi-arrow-up-circle-fill"></i>
-                        </button>
-                    </div>
-                </div>
+    
+    <div class="container">
+        <div class="footer-content">
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/index.html" class="footer-link pulse">Home</a></li>
+                    <li><a href="/FrontEnd/about/index.html" class="footer-link pulse">About</a></li>
+                    <li><a href="/FrontEnd/donate/index.html" class="footer-link pulse">Donations</a></li>
+                </ul>
             </div>
-
-            <!-- Copyright -->
-            <div class="footer-copyright text-center py-3 mt-4 border-top">
-                <small class="footer-text">
-                    © 2025 Your Brand. All rights reserved.
-                    <span class="d-block d-sm-inline">Privacy | Terms</span>
-                </small>
+            
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3 class="footer-title">Contact</h3>
+                <ul class="footer-contacts">
+                    <li class="contact-item">
+                        <i class="bi bi-geo-alt-fill contact-icon"></i>
+                        <span>Comsats University</span>
+                    </li>
+                    <li class="contact-item">
+                        <i class="bi bi-telephone-fill contact-icon"></i>
+                        <span>+92 3479098501</span>
+                    </li>
+                    <li class="contact-item">
+                        <i class="bi bi-envelope-fill contact-icon"></i>
+                        <span>support@helpthem.live</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- New Explore Section -->
+            <div class="footer-section">
+                <h3 class="footer-title">Explore</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link pulse">Our Youtube Channel</a></li>
+                    <!-- <li><a href="#" class="footer-link pulse">Popular designs</a></li>
+                    <li><a href="#" class="footer-link pulse">Contributors</a></li> -->
+                </ul>
             </div>
         </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 Help them Live. 
+        </div>
+    </div>
 
-        <!-- Scripts -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <style>
-            :root {
-                --primary-color: #2196F3;
-                --secondary-color: #f8f9fa;
-                --text-color: #333333;
-                --light-gray: #f5f5f5;
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</footer>
+ 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const submitBtn = document.getElementById('submit-btn-close');
+            const popup = document.getElementById('donationSubmissionPopup');
+            const loaderEl = document.getElementById('donationSubmissionLoader');
+            const closeBtn = document.getElementById('donationCloseBtn');
+            const closeEasyPaisaPopUp = document.querySelector(".easypaisa-payment-popup")
+            
+            // Track if donation is confirmed
+            let donationConfirmed = false;
+            let checkInterval;
+            
+            submitBtn.addEventListener('click', async function() {
+                closeEasyPaisaPopUp.style.display="none"
+                // Show the popup
+                popup.classList.add('active');
+                closeBtn.style.display = 'none';
+                loaderEl.style.display = 'block';
+                
+                // Start checking for confirmation
+                setTimeout(checkDonationConfirmation() , 100)
+                
+                // Set up interval to keep checking
+                checkInterval = setInterval(checkDonationConfirmation, 10);
+            });
+            
+            closeBtn.addEventListener('click', function() {
+                popup.classList.remove('active');
+                clearInterval(checkInterval);
+            });
+            
+             function checkDonationConfirmation() {
+                 loaderEl.style.display = 'none';
+                        closeBtn.style.display = 'inline-block';
             }
+        });
+    </script>
 
-            .custom-footer {
-                background-color: white;
-                color: var(--text-color);
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-            }
-
-            .footer-heading {
-                color: var(--primary-color) !important;
-                font-weight: 600;
-                font-size: 1.1rem;
-                padding-bottom: 0.5rem;
-                position: relative;
-                display: inline-block;
-            }
-
-            .footer-heading:after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 50%;
-                height: 2px;
-                background-color: var(--primary-color);
-            }
-
-            .footer-text {
-                color: var(--text-color);
-                line-height: 1.6;
-            }
-
-            .footer-link {
-                color: var(--text-color) !important;
-                text-decoration: none;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0.5rem 0;
-                transition: all 0.3s ease;
-                font-weight: 500;
-            }
-
-            .footer-link:hover {
-                color: var(--primary-color) !important;
-                padding-left: 5px;
-            }
-
-            .link-icon {
-                color: var(--primary-color);
-                font-size: 1.2rem;
-                transition: all 0.3s ease;
-                opacity: 0;
-            }
-
-            .footer-link:hover .link-icon {
-                opacity: 1;
-                transform: translateX(3px);
-            }
-
-            .social-link {
-                color: var(--text-color) !important;
-                margin-right: 1rem;
-                font-size: 1.1rem;
-                transition: all 0.3s ease;
-            }
-
-            .social-link:hover {
-                color: var(--primary-color) !important;
-                transform: scale(1.2);
-            }
-
-            .btn-scroll-top {
-                border: none;
-                background: none;
-                color: var(--primary-color);
-                font-size: 1.8rem;
-                transition: all 0.3s ease;
-            }
-
-            .btn-scroll-top:hover {
-                transform: scale(1.1);
-            }
-
-            .newsletter-form .form-control {
-                border-radius: 0;
-                border: 1px solid #ddd;
-                border-right: none;
-            }
-
-            .newsletter-form .btn-primary {
-                background-color: var(--primary-color);
-                border-color: var(--primary-color);
-                border-radius: 0;
-            }
-
-            .newsletter-form .form-control:focus {
-                box-shadow: none;
-                border-color: var(--primary-color);
-            }
-
-            .footer-copyright {
-                color: var(--text-color);
-                font-size: 0.85rem;
-            }
-
-            .footer-copyright a {
-                color: var(--primary-color);
-                text-decoration: none;
-            }
-
-            /* Responsive adjustments */
-            @media (max-width: 768px) {
-                .footer-heading:after {
-                    width: 30%;
-                }
-
-                .social-icons {
-                    justify-content: center;
-                }
-            }
-        </style>
         <script>
          document.addEventListener('DOMContentLoaded', function() {
     const submitBtn = document.getElementById('PaymentPopUp');
     const paymentInfoPopup = document.getElementById('paymentInfoPopup');
     const closePaymentPopup = document.getElementById('closePaymentPopup');
     const overlay = document.getElementById('overlay');
-    const DonnationModel = document.querySelector(".donation-modal")
+    const DonnationModel = document.getElementById("donationModal")
     const ModelOverlay= document.querySelector('.modal-overlay')
     
     // Show payment info popup when submit is clicked
     submitBtn.addEventListener('click', function(e) {
         e.preventDefault();
         
-       DonnationModel.style.display='none'
+       DonnationModel.classList.remove("active")
         const donorName = document.getElementById('donorName').value;
         const donationAmount = document.getElementById('donationAmount').value;
         
@@ -510,12 +631,12 @@
         </script>
         <script>
             // Smooth scroll to top
-            document.querySelector('.btn-scroll-top').addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
+            // document.querySelector('.btn-scroll-top').addEventListener('click', () => {
+            //     window.scrollTo({
+            //         top: 0,
+            //         behavior: 'smooth'
+            //     });
+            // });
 
             // Add animation on scroll
             document.addEventListener('DOMContentLoaded', function () {
@@ -532,8 +653,6 @@
                 });
             });
         </script>
-
-    </footer>
     <!-- Bootstrap + jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>

@@ -132,7 +132,7 @@ class DonationCampaign {
   openDonationModal() {
     document.getElementById('donationModal').classList.add('active');
     document.body.classList.add('modal-open');
-    document.querySelector(".donation-modal").style.display='block'
+    // document.querySelector(".donation-modal").style.display='block'
   }
 
   closeDonationModal() {
@@ -191,7 +191,6 @@ class DonationCampaign {
       const result = await response.text();
       console.log('Donation successful:', result);
 
-      this.showThankYouMessage(donorName, donationAmount, isAnonymous);
       this.closeDonationModal();
       await this.fetchCampaignData();
       this.CampaignCompleted(this.collectedAmount, this.goalAmount);
@@ -206,17 +205,7 @@ class DonationCampaign {
 ShowSubmitDonation(){
 
 }
-  showThankYouMessage(name, amount, anonymous) {
-    const msg = `
-      <div class="thank-you-message">
-        <i class="fas fa-heart"></i>
-        <h3>Thank You ${anonymous ? 'Anonymous Donor' : name}!</h3>
-        <p>Your donation of ${this.formatCurrency(amount)}Rs will make a difference.</p>
-        <button onclick="this.parentElement.remove()" class="btn btn-sm btn-outline-primary">Close</button>
-      </div>
-    `;
-    document.body.insertAdjacentHTML('beforeend', msg);
-  }
+
 
   CampaignCompleted(collectedAmount, goalAmount, campaignData) {
     const form = document.getElementById('donation_Form');

@@ -215,7 +215,7 @@
   <div class="hero-section">
     <div class="container text-center">
       <h1 class="page-title">Our Generous Donors</h1>
-      <p class="subtitle">Every contribution makes a difference. Thank you for your support!</p>
+      <p class="subtitle">Helping people, one person at a time.</p>
     </div>
   </div>
 
@@ -224,9 +224,8 @@
     <div class="total-donations">
       <div>
         <h5 class="mb-1">Total Donations Received</h5>
-        <p class="text-muted small">Updated in real-time</p>
       </div>
-      <div class="total-amount" id="total-amount">$0</div>
+      <div class="total-amount" id="total-amount">0Rs</div>
     </div>
 
     <!-- Donation Transactions Table -->
@@ -269,6 +268,58 @@
       Showing 0 of 0 donations
     </div>
   </div>
+    <footer class="custom-footer">
+
+    
+    <div class="container">
+        <div class="footer-content">
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="/index.html" class="footer-link pulse">Home</a></li>
+                    <li><a href="/FrontEnd/about/index.html" class="footer-link pulse">About</a></li>
+                    <li><a href="/FrontEnd/donate/index.html" class="footer-link pulse">Donations</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3 class="footer-title">Contact</h3>
+                <ul class="footer-contacts">
+                    <li class="contact-item">
+                        <i class="bi bi-geo-alt-fill contact-icon"></i>
+                        <span>Comsats University</span>
+                    </li>
+                    <li class="contact-item">
+                        <i class="bi bi-telephone-fill contact-icon"></i>
+                        <span>+92 3479098501</span>
+                    </li>
+                    <li class="contact-item">
+                        <i class="bi bi-envelope-fill contact-icon"></i>
+                        <span>support@helpthem.live</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- New Explore Section -->
+            <div class="footer-section">
+                <h3 class="footer-title">Explore</h3>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link pulse">Our Youtube Channel</a></li>
+                    <!-- <li><a href="#" class="footer-link pulse">Popular designs</a></li>
+                    <li><a href="#" class="footer-link pulse">Contributors</a></li> -->
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 Help them Live. 
+        </div>
+    </div>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</footer>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -311,7 +362,7 @@
         
         // Calculate total amount and update UI
         totalAmount = donationsList.reduce((sum, donation) => sum + parseFloat(donation.amount), 0);
-        totalAmountEl.textContent = `$${totalAmount.toLocaleString()}`;
+        totalAmountEl.textContent = `${totalAmount.toLocaleString()}Rs`;
         donationCountEl.textContent = `${donationsList.length} Donations`;
         
         // Calculate total pages
@@ -337,8 +388,10 @@
       await Promise.all(uniqueCampaignIds.map(async campaignId => {
         try {
           const response = await fetch(`https://api.helpthem.live/donCampController/getCandidateName?campaignID=${campaignId}`);
+    
           if (response.ok) {
             const name = await response.text();
+            console.log(name)
             campaignNamesCache[campaignId] = name || "General Fund";
           }
         } catch (error) {
@@ -370,12 +423,12 @@
                 <i class="fas fa-user text-muted"></i>
               </div>
               <div>
-                <div>${donation.donorName}</div>
-                <small class="text-muted">${campaignName}</small>
+                <div class="text-muted">${donation.donorName}</div>
+                <small class="text-muted">Donated To: ${campaignName}</small>
               </div>
             </div>
           </td>
-          <td class="text-end donation-amount">$${parseFloat(donation.amount).toLocaleString()}</td>
+          <td class="text-end donation-amount">${parseFloat(donation.amount).toLocaleString()}Rs</td>
         `;
         
         tableBody.appendChild(row);
