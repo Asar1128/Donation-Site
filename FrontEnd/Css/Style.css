@@ -11,7 +11,7 @@
     --lavender-mist: #4e54bf;
     --crimson-red: #a60311;
     --midnight-plum: #140826;
-    --primary-color-footer: #4361ee;
+    --primary-color-footer: #2196F3;
     --accent-color: #2196F3;
     --text-color: #2b2d42;
     --light-bg: #f8f9fa;
@@ -63,6 +63,9 @@
 
 footer {
     background: var(--midnight-plum);
+}
+.img-fluid{
+    min-height: 500px;
 }
 
 .footer-section-brandName {
@@ -1555,6 +1558,10 @@ About us Section
      .thumbnail-overlay{
         display: block !important;
      }
+     .img-fluid{
+    min-height: 260px;
+}
+
     
 }
 

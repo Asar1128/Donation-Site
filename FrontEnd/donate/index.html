@@ -439,93 +439,99 @@
     }
     
     // Set up pagination controls
-    function setupPagination() {
-      paginationEl.innerHTML = '';
-      
-      // Previous button
-      const prevLi = document.createElement('li');
-      prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
-      prevLi.innerHTML = `<a class="page-link" href="#" aria-label="Previous" id="prev-page"><span aria-hidden="true">&laquo;</span></a>`;
-      paginationEl.appendChild(prevLi);
-      
-      // Page numbers
-      const maxVisiblePages = 5;
-      let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-      let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-      
-      // Adjust if we're at the end
-      if (endPage - startPage + 1 < maxVisiblePages) {
+    // Set up pagination controls
+function setupPagination() {
+    paginationEl.innerHTML = '';
+    
+    // Previous button
+    const prevLi = document.createElement('li');
+    prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+    prevLi.innerHTML = `<a class="page-link" href="#" aria-label="Previous" id="prev-page"><span aria-hidden="true">&laquo;</span></a>`;
+    paginationEl.appendChild(prevLi);
+    
+    // Page numbers
+    const maxVisiblePages = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+    let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+    
+    // Adjust if we're at the end
+    if (endPage - startPage + 1 < maxVisiblePages) {
         startPage = Math.max(1, endPage - maxVisiblePages + 1);
-      }
-      
-      // First page and ellipsis if needed
-      if (startPage > 1) {
+    }
+    
+    // First page and ellipsis if needed
+    if (startPage > 1) {
         const firstLi = document.createElement('li');
         firstLi.className = 'page-item';
         firstLi.innerHTML = `<a class="page-link" href="#" data-page="1">1</a>`;
         paginationEl.appendChild(firstLi);
         
         if (startPage > 2) {
-          const ellipsisLi = document.createElement('li');
-          ellipsisLi.className = 'page-item disabled';
-          ellipsisLi.innerHTML = `<span class="page-link">...</span>`;
-          paginationEl.appendChild(ellipsisLi);
+            const ellipsisLi = document.createElement('li');
+            ellipsisLi.className = 'page-item disabled';
+            ellipsisLi.innerHTML = `<span class="page-link">...</span>`;
+            paginationEl.appendChild(ellipsisLi);
         }
-      }
-      
-      // Page numbers
-      for (let i = startPage; i <= endPage; i++) {
+    }
+    
+    // Page numbers
+    for (let i = startPage; i <= endPage; i++) {
         const pageLi = document.createElement('li');
         pageLi.className = `page-item ${i === currentPage ? 'active' : ''}`;
         pageLi.innerHTML = `<a class="page-link" href="#" data-page="${i}">${i}</a>`;
         paginationEl.appendChild(pageLi);
-      }
-      
-      // Last page and ellipsis if needed
-      if (endPage < totalPages) {
+    }
+    
+    // Last page and ellipsis if needed
+    if (endPage < totalPages) {
         if (endPage < totalPages - 1) {
-          const ellipsisLi = document.createElement('li');
-          ellipsisLi.className = 'page-item disabled';
-          ellipsisLi.innerHTML = `<span class="page-link">...</span>`;
-          paginationEl.appendChild(ellipsisLi);
+            const ellipsisLi = document.createElement('li');
+            ellipsisLi.className = 'page-item disabled';
+            ellipsisLi.innerHTML = `<span class="page-link">...</span>`;
+            paginationEl.appendChild(ellipsisLi);
         }
         
         const lastLi = document.createElement('li');
         lastLi.className = 'page-item';
         lastLi.innerHTML = `<a class="page-link" href="#" data-page="${totalPages}">${totalPages}</a>`;
         paginationEl.appendChild(lastLi);
-      }
-      
-      // Next button
-      const nextLi = document.createElement('li');
-      nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
-      nextLi.innerHTML = `<a class="page-link" href="#" aria-label="Next" id="next-page"><span aria-hidden="true">&raquo;</span></a>`;
-      paginationEl.appendChild(nextLi);
-      
-      // Add event listeners
-      document.querySelectorAll('[data-page]').forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          renderDonations(parseInt(this.getAttribute('data-page')));
-        });
-      });
-      
-      document.getElementById('prev-page').addEventListener('click', function(e) {
-        e.preventDefault();
-        if (currentPage > 1) {
-          renderDonations(currentPage - 1);
-        }
-      });
-      
-      document.getElementById('next-page').addEventListener('click', function(e) {
-        e.preventDefault();
-        if (currentPage < totalPages) {
-          renderDonations(currentPage + 1);
-        }
-      });
     }
     
-    // Update the page information text
+    // Next button
+    const nextLi = document.createElement('li');
+    nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+    nextLi.innerHTML = `<a class="page-link" href="#" aria-label="Next" id="next-page"><span aria-hidden="true">&raquo;</span></a>`;
+    paginationEl.appendChild(nextLi);
+    
+    // Add event listeners
+    document.querySelectorAll('[data-page]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const newPage = parseInt(this.getAttribute('data-page'));
+            if (newPage !== currentPage) {
+                renderDonations(newPage);
+                setupPagination(); // Rebuild pagination with new active page
+            }
+        });
+    });
+    
+    document.getElementById('prev-page').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (currentPage > 1) {
+            renderDonations(currentPage - 1);
+            setupPagination(); // Rebuild pagination with new active page
+        }
+    });
+    
+    document.getElementById('next-page').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (currentPage < totalPages) {
+            renderDonations(currentPage + 1);
+            setupPagination(); // Rebuild pagination with new active page
+        }
+    });
+}
+        // Update the page information text
     function updatePageInfo() {
       const startIndex = (currentPage - 1) * ITEMS_PER_PAGE + 1;
       const endIndex = Math.min(currentPage * ITEMS_PER_PAGE, donationsList.length);
