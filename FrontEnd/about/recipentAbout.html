@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About the Campaign</title>
+  <link rel="stylesheet" href="../Css/Style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --accent-color: #f72585;
+  --text-color: #2b2d42;
+  --light-bg: #f8f9fa;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+.about-header {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.about-header:hover .about-image {
+  transform: scale(1.03);
+}
+
+.overlay {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+}
+
+.about-title-box {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  color: #fff;
+  max-width: 80%;
+}
+
+.about-title-box h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.about-content {
+  padding: 40px;
+}
+
+.about-content h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.about-content h2:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  border-radius: 2px;
+}
+
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.additional-info {
+  background: var(--light-bg);
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+
+.additional-info h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.info-item {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.info-item i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.info-item h4 {
+  font-size: 1.1rem;
+  margin: 0 0 10px 0;
+  color: var(--text-color);
+}
+
+.info-item p {
+  font-size: 1rem;
+  margin: 0;
+  color: #666;
+}
+
+.progress-container {
+  margin-top: 30px;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.progress-bar {
+  height: 10px;
+  border-radius: 5px;
+  background: #e9ecef;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+  border-radius: 5px;
+  transition: width 1s ease;
+}
+
+.date-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.donation-btn {
+  display: inline-block;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+}
+
+.donation-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .about-header {
+    height: 300px;
+  }
+  
+  .about-title-box {
+    bottom: 20px;
+    left: 20px;
+  }
+  
+  .about-title-box h1 {
+    font-size: 2rem;
+  }
+  
+  .about-content {
+    padding: 25px;
+  }
+  
+  .about-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .additional-info {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .r-nav{
+    position: absolute;
+  }
+  .about-header {
+    height: 250px;
+  }
+  
+  .about-title-box h1 {
+    font-size: 1.8rem;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+    <div class="container navbar-Secondary" style="padding-inline: 20px;">
+      <a class="navbar-brand fw-bold" href="index.html" style="font-weight: 900;">helpthem.live</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end r-nav" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">
+              <span class="nav-link-inner">Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../donate/index.html">
+              <span class="nav-link-inner">Donation</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./index.html">
+              <span class="nav-link-inner">About Us</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./recipentAbout.html">
+              <span class="nav-link-inner">About Recipient</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex">
+        <a class="nav-link admin-login" href="./admin/login/index.html">
+          <i class="fas fa-user-shield me-2"></i>
+          <span class="nav-link-inner"></span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="about-container">
+    <div class="about-header">
+      <img id="recipientImage" src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70" alt="Campaign Image" class="about-image"/>
+      <div class="overlay"></div>
+      <div class="about-title-box">
+        <h1 id="campaignName">New Test</h1>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <h2>About the Campaign</h2>
+      <p id="campaignDescription">Hello testing this</p>
+
+      <div class="additional-info">
+        <h3>Campaign Details</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <i class="fas fa-bullseye"></i>
+            <h4>Goal Amount</h4>
+            <p id="goalAmount">Rs1,000,000</p>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-hand-holding-heart"></i>
+            <h4>Collected Amount</h4>
+            <p id="collectedAmount">Rs1,010</p>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-info-circle"></i>
+            <h4>Status</h4>
+            <p id="campaignStatus">Active</p>
+          </div>
+        </div>
+
+        <div class="progress-container">
+          <div class="progress-label">
+            <span>Progress</span>
+            <span id="progressPercentage">0.1%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 0.1%"></div>
+          </div>
+          <div class="date-info">
+            <span>Start: <span id="startDate">June 14, 2025</span></span>
+            <span>End: <span id="endDate">July 14, 2025</span></span>
+          </div>
+        </div>
+
+        <a href="../index.html" class="donation-btn">
+          <i class="fas fa-heart mr-2"></i> Donate Now
+        </a>
+      </div>
+    </div>
+  </section>
+   <footer class="custom-footer">
+
+
+        <div class="container">
+            <div class="footer-content">
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html" class="footer-link pulse">Home</a></li>
+                        <li><a href="../about/index.html" class="footer-link pulse">About</a></li>
+                        <li><a href="../donate/index.html" class="footer-link pulse">Donations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact</h3>
+                    <ul class="footer-contacts">
+                        <li class="contact-item">
+                            <i class="bi bi-geo-alt-fill contact-icon"></i>
+                            <span>Comsats University</span>
+                        </li>
+                        <li class="contact-item">
+                            <i class="bi bi-telephone-fill contact-icon"></i>
+                            <span>+92 3479098501</span>
+                        </li>
+                        <li class="contact-item">
+                            <i class="bi bi-envelope-fill contact-icon"></i>
+                            <span>support@helpthem.live</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- New Explore Section -->
+                <div class="footer-section">
+                    <h3 class="footer-title">Explore</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link pulse">Our Youtube Channel</a></li>
+                        <!-- <li><a href="#" class="footer-link pulse">Popular designs</a></li>
+                    <li><a href="#" class="footer-link pulse">Contributors</a></li> -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Help them Live.
+            </div>
+        </div>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    </footer>
+
+  <script>
+    // Fetch campaign data from API
+    fetch('https://api.helpthem.live/donCampController/getValidCampaign')
+      .then(res => res.json())
+      .then(data => {
+        // Update the page with API data
+        document.getElementById("campaignName").textContent = data.candidateName || "Campaign";
+        document.getElementById("campaignDescription").textContent = data.description || "No description available";
+        
+        // Format currency values
+        const goalAmount = data.goalAmount ? parseFloat(data.goalAmount) : 0;
+        const collectedAmount = data.collectedAmount ? parseFloat(data.collectedAmount) : 0;
+        document.getElementById("goalAmount").textContent = `Rs${goalAmount.toLocaleString()}`;
+        document.getElementById("collectedAmount").textContent = `Rs${collectedAmount.toLocaleString()}`;
+        
+        // Calculate and display progress
+        const progress = goalAmount > 0 ? (collectedAmount / goalAmount) * 100 : 0;
+        document.getElementById("progressPercentage").textContent = `${progress.toFixed(1)}%`;
+        document.querySelector(".progress-fill").style.width = `${progress}%`;
+        
+        // Set campaign status
+        const status = data.isEnded ? "Ended" : (data.goalReached ? "Goal Reached" : "Active");
+        document.getElementById("campaignStatus").textContent = status;
+        
+        // Format dates
+        const startDate = data.startDate ? new Date(data.startDate) : new Date();
+        const endDate = data.endDate ? new Date(data.endDate) : new Date();
+        document.getElementById("startDate").textContent = startDate.toLocaleDateString('en-US', { 
+          year: 'numeric', month: 'long', day: 'numeric' 
+        });
+        document.getElementById("endDate").textContent = endDate.toLocaleDateString('en-US', { 
+          year: 'numeric', month: 'long', day: 'numeric' 
+        });
+      })
+      .catch(error => {
+        console.error("Error fetching campaign data:", error);
+        // Fallback content if API fails
+        document.getElementById("campaignDescription").textContent = 
+          "We couldn't load the campaign details at this time. Please try again later.";
+      });
+  </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+</body>
+</html>

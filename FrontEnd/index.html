@@ -232,17 +232,14 @@
             display: none;
         }
 
-        /* Payment popup should be above overlay */
         .easypaisa-payment-popup {
             z-index: 1000;
         }
 
-        /* Submission popup should be above everything */
         .donation-submission-overlay {
             z-index: 1001;
         }
 
-        /* Donation modal should be above overlay but below payment popup */
         .modal-overlay {
             z-index: 998;
         }
@@ -281,7 +278,11 @@
                             <span class="nav-link-inner">About Us</span>
                         </a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="about/recipentAbout.html">
+                            <span class="nav-link-inner">About Recipient</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="d-flex">
@@ -311,7 +312,7 @@
                 <div class="banner-content">
                     <h1 id="candidateName" class="banner-title"></h1>
                     <p id="aboutCampaign" class="banner-description"></p>
-                    <a href="AboutUs.html" class="banner-button">
+                    <a href="./about/recipentAbout.html" class="banner-button" >
                         Read More
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -509,12 +510,12 @@
         <div class="container">
             <div class="footer-content">
                 <!-- Quick Links -->
-                <div class="footer-section">
+                  <div class="footer-section">
                     <h3 class="footer-title">Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="/index.html" class="footer-link pulse">Home</a></li>
-                        <li><a href="/FrontEnd/about/index.html" class="footer-link pulse">About</a></li>
-                        <li><a href="/FrontEnd/donate/index.html" class="footer-link pulse">Donations</a></li>
+                        <li><a href="./index.html" class="footer-link pulse">Home</a></li>
+                        <li><a href="./about/index.html" class="footer-link pulse">About</a></li>
+                        <li><a href="./donate/index.html" class="footer-link pulse">Donations</a></li>
                     </ul>
                 </div>
 
@@ -670,7 +671,7 @@
 
 
     <!-- Bootstrap + jQuery -->
-      <!-- Bootstrap JS -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
