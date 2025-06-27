@@ -255,9 +255,9 @@ body {
 }
 </style>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+  <nav class="navbar navbar-expand-lg navbar-light custom-navbar" style="padding-inline: 0px !important;">
     <div class="container navbar-Secondary" style="padding-inline: 20px;">
-      <a class="navbar-brand fw-bold" href="index.html" style="font-weight: 900;">helpthem.live</a>
+      <a class="navbar-brand fw-bold" href="index.html" style="font-weight: 900;"> <a class="navbar-brand fw-bold" href="../index.html" style="font-weight: 900;"> <img src="../Images/navbarlogomain-Photoroom (1).png" alt="Logo" style="width: 200px;transform: translateY(7px);"> </a></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -403,46 +403,63 @@ body {
     </footer>
 
   <script>
-    // Fetch campaign data from API
-    fetch('https://api.helpthem.live/donCampController/getValidCampaign')
-      .then(res => res.json())
-      .then(data => {
-        // Update the page with API data
-        document.getElementById("campaignName").textContent = data.candidateName || "Campaign";
-        document.getElementById("campaignDescription").textContent = data.description || "No description available";
-        
-        // Format currency values
-        const goalAmount = data.goalAmount ? parseFloat(data.goalAmount) : 0;
-        const collectedAmount = data.collectedAmount ? parseFloat(data.collectedAmount) : 0;
-        document.getElementById("goalAmount").textContent = `Rs${goalAmount.toLocaleString()}`;
-        document.getElementById("collectedAmount").textContent = `Rs${collectedAmount.toLocaleString()}`;
-        
-        // Calculate and display progress
-        const progress = goalAmount > 0 ? (collectedAmount / goalAmount) * 100 : 0;
-        document.getElementById("progressPercentage").textContent = `${progress.toFixed(1)}%`;
-        document.querySelector(".progress-fill").style.width = `${progress}%`;
-        
-        // Set campaign status
-        const status = data.isEnded ? "Ended" : (data.goalReached ? "Goal Reached" : "Active");
-        document.getElementById("campaignStatus").textContent = status;
-        
-        // Format dates
-        const startDate = data.startDate ? new Date(data.startDate) : new Date();
-        const endDate = data.endDate ? new Date(data.endDate) : new Date();
-        document.getElementById("startDate").textContent = startDate.toLocaleDateString('en-US', { 
-          year: 'numeric', month: 'long', day: 'numeric' 
-        });
-        document.getElementById("endDate").textContent = endDate.toLocaleDateString('en-US', { 
-          year: 'numeric', month: 'long', day: 'numeric' 
-        });
-      })
-      .catch(error => {
-        console.error("Error fetching campaign data:", error);
-        // Fallback content if API fails
-        document.getElementById("campaignDescription").textContent = 
-          "We couldn't load the campaign details at this time. Please try again later.";
+  // Function to convert custom syntax to HTML
+  function formatDescription(text) {
+    // Handle underline first to avoid conflict with italic asterisks
+    text = text.replace(/\/\/(.*?)\/\//g, '<u>$1</u>');
+
+    // Handle italic (**word**) - Double asterisks
+    text = text.replace(/\*\*(.*?)\*\*/g, '<i>$1</i>');
+
+    // Handle bold (*word*) - Single asterisks
+    text = text.replace(/\*(.*?)\*/g, '<b>$1</b>');
+
+    return text;
+  }
+
+  // Fetch campaign data from API
+  fetch('https://api.helpthem.live/donCampController/getValidCampaign')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("campaignName").textContent = data.candidateName || "Campaign";
+
+      // Format description with custom styling
+      const rawDescription = data.description || "No description available";
+      const formattedDescription = formatDescription(rawDescription);
+      document.getElementById("campaignDescription").innerHTML = formattedDescription;
+
+      // Format currency values
+      const goalAmount = data.goalAmount ? parseFloat(data.goalAmount) : 0;
+      const collectedAmount = data.collectedAmount ? parseFloat(data.collectedAmount) : 0;
+      document.getElementById("goalAmount").textContent = `Rs${goalAmount.toLocaleString()}`;
+      document.getElementById("collectedAmount").textContent = `Rs${collectedAmount.toLocaleString()}`;
+
+      // Calculate and display progress
+      const progress = goalAmount > 0 ? (collectedAmount / goalAmount) * 100 : 0;
+      document.getElementById("progressPercentage").textContent = `${progress.toFixed(1)}%`;
+      document.querySelector(".progress-fill").style.width = `${progress}%`;
+
+      // Set campaign status
+      const status = data.isEnded ? "Ended" : (data.goalReached ? "Goal Reached" : "Active");
+      document.getElementById("campaignStatus").textContent = status;
+
+      // Format dates
+      const startDate = data.startDate ? new Date(data.startDate) : new Date();
+      const endDate = data.endDate ? new Date(data.endDate) : new Date();
+      document.getElementById("startDate").textContent = startDate.toLocaleDateString('en-US', {
+        year: 'numeric', month: 'long', day: 'numeric'
       });
-  </script>
+      document.getElementById("endDate").textContent = endDate.toLocaleDateString('en-US', {
+        year: 'numeric', month: 'long', day: 'numeric'
+      });
+    })
+    .catch(error => {
+      console.error("Error fetching campaign data:", error);
+      document.getElementById("campaignDescription").textContent =
+        "We couldn't load the campaign details at this time. Please try again later.";
+    });
+</script>
+
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 

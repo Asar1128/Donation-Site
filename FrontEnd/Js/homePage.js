@@ -15,6 +15,20 @@ class DonationCampaign {
   }
 
   async fetchCampaignData() {
+   function formatDescription(text) {
+  console.log("Original from API:", text); 
+
+  // Apply custom markdown-style formatting
+  text = text.replace(/\/\/(.*?)\/\//g, '<u>$1</u>');
+  text = text.replace(/\*\*(.*?)\*\*/g, '<i>$1</i>');
+  text = text.replace(/\*(.*?)\*/g, '<b>$1</b>');
+
+  console.log("After formatting:", text); 
+
+  return text;
+}
+
+
     try {
       const response = await fetch('https://api.helpthem.live/donCampController/getValidCampaign');
 
@@ -27,8 +41,8 @@ class DonationCampaign {
       this.collectedAmount = data.collectedAmount;
       this.goalAmount = data.goalAmount;
       this.candidateName = data.candidateName || "Our Charity Campaign";
-      this.description = data.description || "Help us make a difference...";
-
+      this.description =formatDescription(data.description) || "Help us make a difference...";
+      document.getElementById("aboutCampaign").innerHTML =this.description ;
       this.updateCampaignUI(data);
       return data;
 
@@ -38,29 +52,14 @@ class DonationCampaign {
       throw error;
     }
   }
-
-  // handleNoActiveCampaigns() {
-  //   const container = document.getElementById('donation_Form');
-  //   if (container) container.style.display = "none";
-
-  //   const message = document.createElement('div');
-  //   message.className = 'no-campaign-message';
-  //   message.innerHTML = `
-  //     <div class="alert alert-info">
-  //       <i class="fas fa-info-circle"></i>
-  //       There are currently no active campaigns. Please check back later.
-  //     </div>
-  //   `;
-  //   document.querySelector('.progress-donation-section')?.appendChild(message);
-  // }
-
   updateCampaignUI(data) {
     document.getElementById('candidateName').textContent = this.candidateName;
     document.getElementById('collectedAmount').textContent = `${this.formatCurrency(data.collectedAmount)}Rs`;
     document.getElementById('goalAmount').textContent = `/${this.formatCurrency(data.goalAmount)}Rs`;
     this.updateProgressBar(data.collectedAmount, data.goalAmount);
     this.displayCampaignDates(data.startDate, data.endDate);
-    document.getElementById('aboutCampaign').textContent = this.description;
+   document.getElementById('aboutCampaign').innerHTML = this.description;
+
 
     this.CampaignCompleted(data.collectedAmount, data.goalAmount, data);
   }

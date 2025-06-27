@@ -1423,6 +1423,11 @@ About us Section
      }
     }
      @media(max-width:450px){
+        .modal-footer{
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
         .banner-content{
             padding-top: 0;
         }
