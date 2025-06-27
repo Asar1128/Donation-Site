@@ -13,6 +13,7 @@ class DonationCampaign {
     await this.fetchCampaignData();
     this.setupEventListeners();
   }
+  
 
   async fetchCampaignData() {
    function formatDescription(text) {
